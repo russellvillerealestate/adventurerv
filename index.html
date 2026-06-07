@@ -4,22 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Stay ARV | Adventure RV Stays</title>
-  <meta name="description" content="Stay ARV offers RV stays near outdoor adventure, fishing, kayaking, lake sunsets, and campfire memories." />
+  <meta name="description" content="Stay ARV offers RV stays near outdoor adventure, kayaking, sunsets, campfires, and lake life." />
 
   <style>
     :root {
       --bg: #050816;
       --bg2: #0b1020;
       --card: rgba(255,255,255,.08);
-      --card2: rgba(255,255,255,.13);
       --text: #f8fafc;
       --muted: #b8c3d3;
-      --line: rgba(255,255,255,.15);
+      --line: rgba(255,255,255,.16);
       --orange: #f97316;
       --gold: #facc15;
       --green: #22c55e;
       --shadow: 0 30px 90px rgba(0,0,0,.55);
-      --radius: 28px;
+      --radius: 30px;
     }
 
     * { box-sizing: border-box; }
@@ -31,13 +30,16 @@
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 15% 10%, rgba(249,115,22,.22), transparent 34rem),
-        radial-gradient(circle at 85% 0%, rgba(34,197,94,.13), transparent 32rem),
+        radial-gradient(circle at 12% 8%, rgba(249,115,22,.22), transparent 34rem),
+        radial-gradient(circle at 88% 0%, rgba(34,197,94,.13), transparent 32rem),
         var(--bg);
       line-height: 1.6;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .wrap {
       width: min(1180px, calc(100% - 40px));
@@ -57,7 +59,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(5,8,22,.8);
+      background: rgba(5,8,22,.82);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
     }
@@ -100,7 +102,9 @@
       font-weight: 700;
     }
 
-    .nav-links a:hover { color: white; }
+    .nav-links a:hover {
+      color: white;
+    }
 
     .btn {
       display: inline-flex;
@@ -130,12 +134,12 @@
 
     .hero {
       position: relative;
-      min-height: 760px;
+      min-height: 780px;
       display: grid;
       align-items: center;
       overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(5,8,22,.97), rgba(5,8,22,.76) 45%, rgba(5,8,22,.18)),
+        linear-gradient(90deg, rgba(5,8,22,.98), rgba(5,8,22,.74) 44%, rgba(5,8,22,.16)),
         url("sunset%20cypress%20lake.jpeg");
       background-size: cover;
       background-position: center;
@@ -145,7 +149,7 @@
       content: "";
       position: absolute;
       inset: auto 0 0;
-      height: 180px;
+      height: 200px;
       background: linear-gradient(to bottom, transparent, var(--bg));
     }
 
@@ -153,7 +157,7 @@
       position: relative;
       z-index: 2;
       max-width: 780px;
-      padding: 100px 0 120px;
+      padding: 100px 0 130px;
     }
 
     .tag {
@@ -171,7 +175,7 @@
 
     h1 {
       margin: 22px 0 18px;
-      font-size: clamp(50px, 8vw, 96px);
+      font-size: clamp(50px, 8vw, 98px);
       line-height: .9;
       letter-spacing: -.085em;
     }
@@ -217,7 +221,9 @@
       font-weight: 700;
     }
 
-    section { padding: 86px 0; }
+    section {
+      padding: 86px 0;
+    }
 
     .section-head {
       max-width: 760px;
@@ -237,16 +243,72 @@
       font-size: 18px;
     }
 
+    .split-chaos {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .big-photo {
+      min-height: 590px;
+      border-radius: 38px;
+      background:
+        linear-gradient(to top, rgba(0,0,0,.35), transparent),
+        url("kayak%20group%20cypress.jpeg");
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .stack {
+      display: grid;
+      gap: 24px;
+    }
+
+    .panel {
+      border-radius: 34px;
+      padding: 34px;
+      background:
+        radial-gradient(circle at top right, rgba(249,115,22,.16), transparent 18rem),
+        var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .panel h2 {
+      margin: 0 0 14px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: .95;
+      letter-spacing: -.07em;
+    }
+
+    .panel p {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 0 24px;
+    }
+
+    .mini-photo {
+      min-height: 260px;
+      border-radius: 30px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 60px rgba(0,0,0,.38);
+    }
+
     .cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1.1fr .9fr 1fr;
       gap: 18px;
     }
 
     .card {
       position: relative;
       overflow: hidden;
-      min-height: 310px;
+      min-height: 340px;
       padding: 26px;
       border-radius: var(--radius);
       background: var(--card);
@@ -258,11 +320,19 @@
       background-position: center;
     }
 
+    .card.offset {
+      transform: translateY(36px);
+    }
+
+    .card.small-offset {
+      transform: translateY(-18px);
+    }
+
     .card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,.22));
+      background: linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,.18));
     }
 
     .card-content {
@@ -272,7 +342,7 @@
 
     .card h3 {
       margin: 0 0 8px;
-      font-size: 27px;
+      font-size: 28px;
       line-height: 1.05;
       letter-spacing: -.05em;
     }
@@ -282,80 +352,15 @@
       color: #dbe4ef;
     }
 
-    .feature {
+    .masonry {
       display: grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap: 26px;
-      align-items: stretch;
-    }
-
-    .photo-panel {
-      min-height: 570px;
-      border-radius: 34px;
-      background:
-        linear-gradient(to top, rgba(0,0,0,.35), transparent),
-        url("kayak%20group%20cypress.jpeg");
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--line);
-    }
-
-    .feature-panel {
-      border-radius: 34px;
-      padding: 42px;
-      background:
-        radial-gradient(circle at top right, rgba(249,115,22,.16), transparent 18rem),
-        var(--card);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-
-    .feature-panel h2 {
-      margin: 0 0 14px;
-      font-size: clamp(36px, 5vw, 64px);
-      line-height: .95;
-      letter-spacing: -.07em;
-    }
-
-    .feature-panel p {
-      color: var(--muted);
-      font-size: 18px;
-      margin: 0 0 24px;
-    }
-
-    .list {
-      display: grid;
-      gap: 12px;
-      margin: 28px 0;
-    }
-
-    .list-item {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      padding: 15px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid var(--line);
-    }
-
-    .check {
-      color: var(--green);
-      font-weight: 950;
-      font-size: 19px;
-      line-height: 1.1;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 230px;
-      gap: 14px;
+      grid-template-columns: 1.25fr .75fr 1fr .9fr;
+      grid-auto-rows: 150px;
+      gap: 15px;
     }
 
     .tile {
-      border-radius: 24px;
+      border-radius: 26px;
       background-size: cover;
       background-position: center;
       border: 1px solid var(--line);
@@ -368,17 +373,22 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.32), transparent);
+      background: linear-gradient(to top, rgba(0,0,0,.34), transparent);
     }
 
-    .wide { grid-column: span 2; }
-    .tall { grid-row: span 2; }
+    .tile:nth-child(1) { grid-column: span 2; grid-row: span 3; }
+    .tile:nth-child(2) { grid-row: span 2; }
+    .tile:nth-child(3) { grid-row: span 4; }
+    .tile:nth-child(4) { grid-row: span 2; }
+    .tile:nth-child(5) { grid-column: span 2; grid-row: span 2; }
+    .tile:nth-child(6) { grid-row: span 3; }
+    .tile:nth-child(7) { grid-column: span 2; grid-row: span 2; }
 
     .cta {
       padding: 58px;
       border-radius: 38px;
       background:
-        linear-gradient(135deg, rgba(249,115,22,.96), rgba(250,204,21,.82)),
+        linear-gradient(135deg, rgba(249,115,22,.92), rgba(250,204,21,.76)),
         url("fire%20with%20friends.jpeg");
       background-size: cover;
       background-position: center;
@@ -429,13 +439,47 @@
     }
 
     @media (max-width: 980px) {
-      .nav-links { display: none; }
-      .hero { min-height: auto; }
-      .hero-content { padding: 74px 0 96px; }
-      .stats, .cards, .feature { grid-template-columns: 1fr; }
-      .photo-panel { min-height: 380px; }
-      .gallery { grid-template-columns: 1fr 1fr; }
-      .wide, .tall { grid-column: span 1; grid-row: span 1; }
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 74px 0 96px;
+      }
+
+      .stats,
+      .cards,
+      .split-chaos,
+      .masonry {
+        grid-template-columns: 1fr;
+      }
+
+      .big-photo {
+        min-height: 390px;
+      }
+
+      .card.offset,
+      .card.small-offset {
+        transform: none;
+      }
+
+      .tile,
+      .tile:nth-child(1),
+      .tile:nth-child(2),
+      .tile:nth-child(3),
+      .tile:nth-child(4),
+      .tile:nth-child(5),
+      .tile:nth-child(6),
+      .tile:nth-child(7) {
+        grid-column: auto;
+        grid-row: auto;
+        min-height: 280px;
+      }
+
       .cta {
         flex-direction: column;
         align-items: flex-start;
@@ -444,15 +488,20 @@
     }
 
     @media (max-width: 600px) {
-      .stats, .gallery { grid-template-columns: 1fr; }
-      .wrap { width: min(100% - 28px, 1180px); }
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .wrap {
+        width: min(100% - 28px, 1180px);
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="top">
-    Stay ARV — RV stays, lake days, campfires, fishing, kayaking, and outdoor memories.
+    Stay ARV — RV stays, lake days, campfires, kayaking, fishing, and outdoor memories.
   </div>
 
   <nav class="nav">
@@ -463,9 +512,9 @@
       </a>
 
       <div class="nav-links">
-        <a href="#stays">Stays</a>
+        <a href="#stay">Stay</a>
         <a href="#adventure">Adventure</a>
-        <a href="#gallery">Photos</a>
+        <a href="#photos">Photos</a>
         <a href="#contact" class="btn">Contact</a>
       </div>
     </div>
@@ -479,13 +528,13 @@
         <h1>Park close to the adventure.</h1>
 
         <p>
-          Stay ARV is a simple, outdoor-focused place for RV travelers who want lake days,
-          campfires, fishing, kayaking, and a comfortable basecamp.
+          A darker, cleaner RV stay brand built around lake days, campfires, cypress water,
+          kayaking, fishing, and a comfortable place to land.
         </p>
 
         <div class="hero-actions">
           <a class="btn" href="#contact">Request Availability</a>
-          <a class="btn outline" href="#gallery">View Photos</a>
+          <a class="btn outline" href="#photos">View Photos</a>
         </div>
 
         <div class="stats">
@@ -507,35 +556,35 @@
   </header>
 
   <main>
-    <section id="stays">
+    <section id="stay">
       <div class="wrap">
         <div class="section-head">
-          <h2>Stay simple. Get outside.</h2>
+          <h2>Not just a place to park.</h2>
           <p>
-            Built for RV guests who want a clean place to land and quick access to the kind
-            of outdoor experiences people actually remember.
+            Stay ARV gives travelers a simple basecamp with a stronger outdoor feel than a
+            plain RV lot website.
           </p>
         </div>
 
         <div class="cards">
-          <article class="card" style="background-image:url('IMG_5786.JPG');">
+          <article class="card small-offset" style="background-image:url('IMG_5786.JPG');">
             <div class="card-content">
-              <h3>RV Stays</h3>
-              <p>Short stays, longer visits, and a practical basecamp for travelers.</p>
+              <h3>Easy RV Stays</h3>
+              <p>For overnight guests, weekend visitors, and longer stays.</p>
             </div>
           </article>
 
-          <article class="card" style="background-image:url('fire%20with%20friends.jpeg');">
+          <article class="card offset" style="background-image:url('fire%20with%20friends.jpeg');">
             <div class="card-content">
               <h3>Campfire Nights</h3>
-              <p>Relaxed evenings, friends, stories, and the kind of stay that feels easy.</p>
+              <p>Friends, stories, and evenings that feel like the reason you came.</p>
             </div>
           </article>
 
-          <article class="card" style="background-image:url('pro%20fishing.webp');">
+          <article class="card" style="background-image:url('IMG_5787.JPG');">
             <div class="card-content">
-              <h3>Fishing Trips</h3>
-              <p>A good home base for guests chasing water, fish, and quiet mornings.</p>
+              <h3>Outdoor Basecamp</h3>
+              <p>A clean place to settle in before heading back outside.</p>
             </div>
           </article>
         </div>
@@ -543,81 +592,42 @@
     </section>
 
     <section id="adventure">
-      <div class="wrap feature">
-        <div class="photo-panel"></div>
+      <div class="wrap split-chaos">
+        <div class="big-photo"></div>
 
-        <div class="feature-panel">
-          <span class="tag">Lake + woods + road trips</span>
-          <h2>A darker, cleaner RV stay brand.</h2>
-          <p>
-            This site is designed around the real photos: cypress water, sunsets, fishing,
-            kayaking, campfires, and outdoor groups. It feels more like a destination than
-            a basic parking page.
-          </p>
-
-          <div class="list">
-            <div class="list-item">
-              <span class="check">✓</span>
-              <div>
-                <strong>Overnight and weekend stays</strong><br>
-                <span style="color: var(--muted);">Good for travelers passing through or visiting the area.</span>
-              </div>
-            </div>
-
-            <div class="list-item">
-              <span class="check">✓</span>
-              <div>
-                <strong>Outdoor-friendly location</strong><br>
-                <span style="color: var(--muted);">Positioned around lake life, fishing, kayaking, and campfires.</span>
-              </div>
-            </div>
-
-            <div class="list-item">
-              <span class="check">✓</span>
-              <div>
-                <strong>Simple contact flow</strong><br>
-                <span style="color: var(--muted);">Visitors can quickly ask about availability and stay details.</span>
-              </div>
-            </div>
+        <div class="stack">
+          <div class="panel">
+            <span class="tag">Lake + woods + road trips</span>
+            <h2>Built around the good part of traveling.</h2>
+            <p>
+              The site leans into the strongest visuals: cypress water, sunsets, group trips,
+              campfires, fishing, and the feeling of being outside.
+            </p>
+            <a class="btn" href="#contact">Ask About a Stay</a>
           </div>
 
-          <a class="btn" href="#contact">Ask About a Stay</a>
+          <div class="mini-photo" style="background-image:url('JPEG%20image-9D7C978B5F3A-1.jpeg');"></div>
         </div>
       </div>
     </section>
 
-    <section id="gallery">
+    <section id="photos">
       <div class="wrap">
         <div class="section-head">
-          <h2>Real outdoor photos.</h2>
+          <h2>Real photos, arranged loose.</h2>
           <p>
-            These are arranged as a dark, modern photo grid. Later, we can replace or reorder
-            them once you know which photos are strongest.
+            No perfect symmetry. The layout intentionally feels staggered and more natural.
           </p>
         </div>
 
-        <div class="gallery">
-          <div class="tile wide tall" style="background-image:url('sunset%20cypress%20lake.jpeg');"></div>
+        <div class="masonry">
+          <div class="tile" style="background-image:url('sunset%20cypress%20lake.jpeg');"></div>
+          <div class="tile" style="background-image:url('fire%20with%20friends.jpeg');"></div>
           <div class="tile" style="background-image:url('kayak%20group%20cypress.jpeg');"></div>
-          <div class="tile" style="background-image:url('pro%20fishing.webp');"></div>
+          <div class="tile" style="background-image:url('IMG_5786.JPG');"></div>
+          <div class="tile" style="background-image:url('Screenshot%202023-10-20%20at%208.33.14%20PM.jpeg');"></div>
           <div class="tile" style="background-image:url('IMG_5787.JPG');"></div>
-          <div class="tile" style="background-image:url('JPEG%20image-4D2BF5323F06-1.jpeg');"></div>
-          <div class="tile wide" style="background-image:url('JPEG%20image-6B1223A611F0-1.jpeg');"></div>
-          <div class="tile" style="background-image:url('JPEG%20image-6D5923C9A919-1.jpeg');"></div>
           <div class="tile" style="background-image:url('JPEG%20image-9D7C978B5F3A-1.jpeg');"></div>
-          <div class="tile wide" style="background-image:url('JPEG%20image-44F1-831B-4F-0.jpeg');"></div>
-          <div class="tile" style="background-image:url('JPEG%20image-55BF561C8926-1.jpeg');"></div>
-          <div class="tile" style="background-image:url('JPEG%20image-99DCFA6E0A7F-1.jpeg');"></div>
-          <div class="tile wide" style="background-image:url('JPEG%20image-9030D05D3A27-1.jpeg');"></div>
-          <div class="tile" style="background-image:url('JPEG%20image-31341449C825-1.jpeg');"></div>
-          <div class="tile" style="background-image:url('JPEG%20image-BBBAE55BF604-1.jpeg');"></div>
-          <div class="tile wide" style="background-image:url('JPEG%20image-CD6EAD523C88-1.jpeg');"></div>
-          <div class="tile" style="background-image:url('JPEG%20image-D81985947555-1.jpeg');"></div>
-          <div class="tile" style="background-image:url('JPEG%20image-DF555A3B634C-1.jpeg');"></div>
-          <div class="tile wide" style="background-image:url('JPEG%20image-E38B32348414-1.jpeg');"></div>
-          <div class="tile" style="background-image:url('JPEG%20image-E7321DBCD7EA-1.jpeg');"></div>
-          <div class="tile" style="background-image:url('JPEG%20image-ED68E1DE6445-1.jpeg');"></div>
-          <div class="tile wide" style="background-image:url('Screenshot%202023-10-20%20at%208.33.14%20PM.jpeg');"></div>
         </div>
       </div>
     </section>
@@ -628,7 +638,7 @@
           <div>
             <h2>Ready to check availability?</h2>
             <p>
-              Contact Stay ARV for site details, current openings, pricing, and stay options.
+              Contact Stay ARV for site details, pricing, current openings, and stay options.
             </p>
           </div>
 
