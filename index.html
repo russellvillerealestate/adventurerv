@@ -3,34 +3,42 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stay ARV | Adventure RV</title>
-  <meta name="description" content="Stay ARV offers a comfortable RV stay with convenient access, practical amenities, and a clean, welcoming setting." />
+
+  <title>Stay ARV | Adventure RV Stays</title>
+  <meta name="description" content="Stay ARV offers comfortable RV stays with a clean, simple, outdoor-focused experience." />
 
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-soft: #111827;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --light: #f8fafc;
-      --accent: #f97316;
-      --accent-dark: #c2410c;
-      --green: #16a34a;
-      --border: #e2e8f0;
-      --shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
-      --radius: 22px;
+      --bg: #050816;
+      --bg-2: #0b1020;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-strong: rgba(255, 255, 255, 0.13);
+      --text: #f8fafc;
+      --muted: #b6c2d1;
+      --line: rgba(255, 255, 255, 0.14);
+      --orange: #f97316;
+      --gold: #facc15;
+      --green: #22c55e;
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.5);
+      --radius: 28px;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
-      background: var(--light);
+      background:
+        radial-gradient(circle at top left, rgba(249, 115, 22, 0.18), transparent 34rem),
+        radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 30rem),
+        var(--bg);
       line-height: 1.6;
     }
 
@@ -39,31 +47,35 @@
       text-decoration: none;
     }
 
-    .topbar {
+    .wrap {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .notice {
       background: #020617;
-      color: white;
-      padding: 14px 22px;
-      font-size: 14px;
+      color: #dbeafe;
       text-align: center;
+      padding: 10px 18px;
+      font-size: 14px;
+      border-bottom: 1px solid var(--line);
     }
 
     .nav {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      background: rgba(5, 8, 22, 0.78);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
     }
 
     .nav-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 16px 22px;
+      height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 22px;
     }
 
     .brand {
@@ -71,59 +83,595 @@
       align-items: center;
       gap: 12px;
       font-weight: 900;
-      letter-spacing: -0.04em;
-      font-size: 24px;
+      font-size: 23px;
+      letter-spacing: -0.05em;
     }
 
-    .logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), #facc15);
+    .mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
       display: grid;
       place-items: center;
-      color: white;
-      font-weight: 900;
-      box-shadow: 0 10px 24px rgba(249, 115, 22, 0.35);
+      background: linear-gradient(135deg, var(--orange), var(--gold));
+      color: #111827;
+      font-weight: 950;
+      box-shadow: 0 12px 30px rgba(249, 115, 22, 0.35);
     }
 
     .nav-links {
       display: flex;
-      gap: 18px;
       align-items: center;
+      gap: 20px;
+      color: var(--muted);
       font-size: 15px;
-      color: #334155;
+      font-weight: 700;
     }
 
-    .button {
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 13px 20px;
+      min-height: 48px;
+      padding: 13px 21px;
       border-radius: 999px;
-      background: var(--accent);
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, var(--orange), #fb923c);
       color: white;
-      font-weight: 800;
-      border: none;
-      box-shadow: 0 12px 26px rgba(249, 115, 22, 0.32);
-      transition: 0.2s ease;
+      font-weight: 900;
+      box-shadow: 0 15px 35px rgba(249, 115, 22, 0.3);
+      transition: transform 0.2s ease, filter 0.2s ease;
+      cursor: pointer;
     }
 
-    .button:hover {
-      background: var(--accent-dark);
-      transform: translateY(-1px);
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
     }
 
-    .button.secondary {
-      background: white;
-      color: var(--text);
-      border: 1px solid var(--border);
+    .btn.outline {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--line);
+      color: white;
       box-shadow: none;
     }
 
     .hero {
       position: relative;
       overflow: hidden;
+      min-height: 760px;
+      display: grid;
+      align-items: center;
       background:
-        linear-gradient(135deg, rgba(2, 6, 23, 0.86), rgba(15, 23, 42, 0.72)),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?
+        linear-gradient(90deg, rgba(5, 8, 22, 0.96) 0%, rgba(5, 8, 22, 0.78) 44%, rgba(5, 8, 22, 0.18) 100%),
+        url("https://source.unsplash.com/1800x1200/?rv,camping,forest");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 180px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 100px 0 120px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--line);
+      color: #fde68a;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: 0.9;
+      letter-spacing: -0.085em;
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: 0 0 30px;
+      color: #dbe4ef;
+      font-size: clamp(18px, 2vw, 22px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 680px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 26px;
+      letter-spacing: -0.04em;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .section-head {
+      max-width: 740px;
+      margin-bottom: 32px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      min-height: 285px;
+      padding: 26px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .card.image {
+      display: flex;
+      align-items: flex-end;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card.image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.12));
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      background: rgba(249, 115, 22, 0.16);
+      border: 1px solid rgba(249, 115, 22, 0.28);
+      color: #fed7aa;
+      font-size: 25px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 25px;
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .image .card p {
+      color: #dbe4ef;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .photo-panel {
+      min-height: 560px;
+      border-radius: 34px;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.25), transparent),
+        url("https://source.unsplash.com/1200x1600/?forest,lake,camping");
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .feature-panel {
+      border-radius: 34px;
+      padding: 42px;
+      background:
+        radial-gradient(circle at top right, rgba(249, 115, 22, 0.16), transparent 18rem),
+        var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-panel h2 {
+      margin: 0 0 14px;
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+    }
+
+    .feature-panel p {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 0 24px;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      margin: 28px 0;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 15px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--line);
+    }
+
+    .check {
+      color: var(--green);
+      font-weight: 950;
+      font-size: 19px;
+      line-height: 1.1;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1fr;
+      gap: 16px;
+    }
+
+    .gallery div {
+      min-height: 330px;
+      border-radius: 28px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 55px rgba(0,0,0,0.32);
+    }
+
+    .gallery div:nth-child(1) {
+      background-image: url("https://source.unsplash.com/1000x800/?campfire,woods");
+    }
+
+    .gallery div:nth-child(2) {
+      background-image: url("https://source.unsplash.com/900x900/?mountains,trail");
+    }
+
+    .gallery div:nth-child(3) {
+      background-image: url("https://source.unsplash.com/900x900/?river,forest");
+    }
+
+    .cta {
+      padding: 58px;
+      border-radius: 38px;
+      background:
+        linear-gradient(135deg, rgba(249, 115, 22, 0.96), rgba(250, 204, 21, 0.84)),
+        url("https://source.unsplash.com/1600x800/?sunset,camping");
+      background-size: cover;
+      background-position: center;
+      color: #111827;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .cta h2 {
+      margin: 0 0 10px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+    }
+
+    .cta p {
+      margin: 0;
+      max-width: 630px;
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(17, 24, 39, 0.82);
+    }
+
+    .cta .btn {
+      background: #111827;
+      color: white;
+      box-shadow: 0 20px 45px rgba(17, 24, 39, 0.25);
+      white-space: nowrap;
+    }
+
+    footer {
+      padding: 34px 0;
+      color: #94a3b8;
+      border-top: 1px solid var(--line);
+      background: #030712;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 74px 0 96px;
+      }
+
+      .stats,
+      .cards,
+      .feature,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-panel {
+        min-height: 380px;
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="notice">
+    Stay ARV — RV stays, outdoor access, and a cleaner way to stay awhile.
+  </div>
+
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#">
+        <span class="mark">ARV</span>
+        <span>Stay ARV</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#amenities">Amenities</a>
+        <a href="#stays">Stays</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact" class="btn">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-content">
+        <span class="tag">Adventure RV</span>
+
+        <h1>Park. Unwind. Stay awhile.</h1>
+
+        <p>
+          A dark-sky, outdoor-inspired home base for RV travelers looking for a clean,
+          simple, and comfortable place to land.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#contact">Request Availability</a>
+          <a class="btn outline" href="#amenities">Explore the Site</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>RV</strong>
+            <span>Friendly setup</span>
+          </div>
+          <div class="stat">
+            <strong>Easy</strong>
+            <span>Arrival and access</span>
+          </div>
+          <div class="stat">
+            <strong>Stay</strong>
+            <span>Short or extended</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="amenities">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Simple amenities. Strong first impression.</h2>
+          <p>
+            Use this section to list what you actually offer. The placeholders below are safe
+            until you replace them with final site details.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icon">🚐</div>
+            <h3>RV-Friendly Sites</h3>
+            <p>Clear parking options for travelers, workers, and guests needing a practical stay.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">⚡</div>
+            <h3>Utility Options</h3>
+            <p>Add confirmed hookup details here: electric, water, sewer, Wi-Fi, laundry, or bathhouse.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🌲</div>
+            <h3>Outdoor Feel</h3>
+            <p>A nature-forward stay with a cleaner, quieter look than a generic parking-lot page.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="stays">
+      <div class="wrap feature">
+        <div class="photo-panel"></div>
+
+        <div class="feature-panel">
+          <span class="tag">Built for real travelers</span>
+          <h2>A better basecamp for the road.</h2>
+          <p>
+            Stay ARV is positioned for guests who want a clean, easy RV stay without dealing
+            with a complicated booking experience.
+          </p>
+
+          <div class="list">
+            <div class="list-item">
+              <span class="check">✓</span>
+              <div>
+                <strong>Overnight stays</strong><br>
+                <span style="color: var(--muted);">Good for travelers passing through.</span>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <span class="check">✓</span>
+              <div>
+                <strong>Weekend stays</strong><br>
+                <span style="color: var(--muted);">Good for guests visiting local events, family, or outdoor areas.</span>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <span class="check">✓</span>
+              <div>
+                <strong>Extended stays</strong><br>
+                <span style="color: var(--muted);">Good for workers, seasonal guests, and longer RV visits.</span>
+              </div>
+            </div>
+          </div>
+
+          <a class="btn" href="#contact">Ask About a Stay</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Outdoor atmosphere without uploading photos.</h2>
+          <p>
+            These images load from the internet automatically. Later, you can replace them with
+            real photos of the property.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <div aria-label="Camping in the woods"></div>
+          <div aria-label="Mountain trail"></div>
+          <div aria-label="River and forest"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="cta">
+          <div>
+            <h2>Ready to check availability?</h2>
+            <p>
+              Contact us for current site details, pricing, availability, and stay options.
+            </p>
+          </div>
+
+          <a class="btn" href="mailto:info@stayarv.com">Email Stay ARV</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>© <span id="year"></span> Stay ARV. All rights reserved.</div>
+      <div>stayarv.com</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
