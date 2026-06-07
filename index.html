@@ -9,22 +9,20 @@
 
   <style>
     :root {
-      --bg: #071014;
-      --card: rgba(19,37,39,.82);
-      --text: #fff7e8;
-      --muted: #d8c7a4;
-      --line: rgba(255,247,232,.18);
-
-      --orange: #d86f2a;
-      --orange2: #f09a3e;
-      --gold: #d7a94b;
-      --teal: #2f7f83;
-      --teal2: #5fb6ad;
-      --brown: #3b2417;
-      --cream: #fff7e8;
-
-      --green: #6aa76f;
-      --shadow: 0 30px 90px rgba(0,0,0,.58);
+      --forest: #061313;
+      --forest2: #0d2423;
+      --deep: #020807;
+      --teal: #1f6f73;
+      --teal2: #67b3aa;
+      --burnt: #b95524;
+      --orange: #d97832;
+      --clay: #8a3f22;
+      --gold: #d8a84b;
+      --sand: #ead6a5;
+      --cream: #fff4dc;
+      --brown: #2a180f;
+      --line: rgba(234, 214, 165, .24);
+      --shadow: 0 30px 90px rgba(0,0,0,.62);
       --radius: 30px;
     }
 
@@ -39,11 +37,11 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
+      color: var(--cream);
       background:
-        radial-gradient(circle at 12% 8%, rgba(216,111,42,.20), transparent 34rem),
-        radial-gradient(circle at 88% 0%, rgba(47,127,131,.22), transparent 32rem),
-        linear-gradient(180deg, #071014, #0b1818 55%, #050807);
+        radial-gradient(circle at 12% 4%, rgba(185,85,36,.36), transparent 28rem),
+        radial-gradient(circle at 88% 2%, rgba(31,111,115,.38), transparent 32rem),
+        linear-gradient(180deg, var(--forest), var(--forest2) 48%, var(--deep));
       line-height: 1.6;
     }
 
@@ -58,21 +56,23 @@
     }
 
     .top {
-      background: #071014;
-      color: var(--muted);
+      background: #0b1c1b;
+      color: var(--sand);
       text-align: center;
       padding: 10px 18px;
       font-size: 14px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(216,168,75,.26);
     }
 
     .nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(7,16,20,.88);
+      background:
+        linear-gradient(90deg, rgba(6,19,19,.96), rgba(42,24,15,.90));
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(216,169,75,.22);
+      border-bottom: 1px solid rgba(216,168,75,.32);
+      box-shadow: 0 12px 40px rgba(0,0,0,.28);
     }
 
     .nav-inner {
@@ -90,6 +90,7 @@
       font-size: 23px;
       font-weight: 900;
       letter-spacing: -.05em;
+      color: var(--cream);
     }
 
     .mark {
@@ -98,8 +99,10 @@
       border-radius: 14px;
       display: block;
       object-fit: cover;
-      box-shadow: 0 14px 32px rgba(216,111,42,.35);
-      border: 1px solid rgba(255,247,232,.25);
+      box-shadow:
+        0 0 0 2px rgba(216,168,75,.34),
+        0 14px 32px rgba(185,85,36,.38);
+      border: 1px solid rgba(255,244,220,.32);
       background: #111827;
     }
 
@@ -107,9 +110,9 @@
       display: flex;
       gap: 20px;
       align-items: center;
-      color: var(--muted);
+      color: var(--sand);
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .nav-links a:hover {
@@ -123,22 +126,22 @@
       min-height: 48px;
       padding: 13px 22px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--orange), var(--orange2));
+      background: linear-gradient(135deg, var(--burnt), var(--orange));
       color: var(--cream);
       font-weight: 900;
-      box-shadow: 0 16px 36px rgba(216,111,42,.34);
-      border: 1px solid rgba(255,247,232,.12);
+      box-shadow: 0 16px 36px rgba(185,85,36,.42);
+      border: 1px solid rgba(255,244,220,.18);
       transition: .2s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      filter: brightness(1.05);
+      filter: brightness(1.07);
     }
 
     .btn.outline {
-      background: rgba(47,127,131,.22);
-      border-color: rgba(216,169,75,.35);
+      background: rgba(31,111,115,.34);
+      border-color: rgba(216,168,75,.48);
       color: var(--cream);
       box-shadow: none;
     }
@@ -150,7 +153,8 @@
       align-items: center;
       overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(7,16,20,.98), rgba(7,16,20,.74) 44%, rgba(7,16,20,.16)),
+        linear-gradient(90deg, rgba(6,19,19,.98), rgba(13,36,35,.78) 44%, rgba(42,24,15,.20)),
+        radial-gradient(circle at 75% 65%, rgba(216,168,75,.18), transparent 22rem),
         url("sunset%20cypress%20lake.jpeg");
       background-size: cover;
       background-position: center;
@@ -160,8 +164,8 @@
       content: "";
       position: absolute;
       inset: auto 0 0;
-      height: 200px;
-      background: linear-gradient(to bottom, transparent, #071014);
+      height: 210px;
+      background: linear-gradient(to bottom, transparent, var(--forest));
     }
 
     .hero-content {
@@ -175,13 +179,14 @@
       display: inline-flex;
       padding: 8px 13px;
       border-radius: 999px;
-      background: rgba(59,36,23,.72);
-      border: 1px solid rgba(216,169,75,.38);
-      color: #f6d887;
+      background: rgba(42,24,15,.82);
+      border: 1px solid rgba(216,168,75,.58);
+      color: #f9d77d;
       font-size: 13px;
       font-weight: 900;
       letter-spacing: .08em;
       text-transform: uppercase;
+      box-shadow: 0 12px 28px rgba(0,0,0,.25);
     }
 
     h1 {
@@ -190,12 +195,13 @@
       line-height: .9;
       letter-spacing: -.085em;
       color: var(--cream);
+      text-shadow: 0 6px 30px rgba(0,0,0,.42);
     }
 
     .hero p {
       max-width: 650px;
       margin: 0 0 30px;
-      color: #f3e6cf;
+      color: #f0ddb8;
       font-size: clamp(18px, 2vw, 22px);
     }
 
@@ -216,9 +222,10 @@
     .stat {
       padding: 18px;
       border-radius: 20px;
-      background: rgba(19,37,39,.72);
-      border: 1px solid rgba(216,169,75,.22);
+      background: rgba(13,36,35,.72);
+      border: 1px solid rgba(216,168,75,.34);
       backdrop-filter: blur(10px);
+      box-shadow: 0 14px 35px rgba(0,0,0,.22);
     }
 
     .stat strong {
@@ -229,9 +236,9 @@
     }
 
     .stat span {
-      color: var(--muted);
+      color: var(--sand);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     section {
@@ -253,7 +260,7 @@
 
     .section-head p {
       margin: 0;
-      color: var(--muted);
+      color: var(--sand);
       font-size: 18px;
     }
 
@@ -269,9 +276,9 @@
       min-height: 340px;
       padding: 26px;
       border-radius: var(--radius);
-      background: var(--card);
-      border: 1px solid rgba(216,169,75,.20);
-      box-shadow: 0 18px 50px rgba(0,0,0,.34);
+      background: rgba(13,36,35,.82);
+      border: 1px solid rgba(216,168,75,.30);
+      box-shadow: 0 18px 50px rgba(0,0,0,.38);
       display: flex;
       align-items: flex-end;
       background-size: cover;
@@ -291,8 +298,9 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(7,16,20,.90), rgba(59,36,23,.18)),
-        radial-gradient(circle at bottom left, rgba(216,111,42,.16), transparent 20rem);
+        linear-gradient(to top, rgba(6,19,19,.94), rgba(42,24,15,.30)),
+        radial-gradient(circle at bottom left, rgba(185,85,36,.26), transparent 20rem),
+        radial-gradient(circle at top right, rgba(31,111,115,.18), transparent 16rem);
     }
 
     .card-content {
@@ -310,7 +318,7 @@
 
     .card p {
       margin: 0;
-      color: #f3e6cf;
+      color: #f0ddb8;
     }
 
     .split-chaos {
@@ -324,12 +332,12 @@
       min-height: 590px;
       border-radius: 38px;
       background:
-        linear-gradient(to top, rgba(7,16,20,.42), transparent),
+        linear-gradient(to top, rgba(6,19,19,.42), transparent),
         url("kayak%20group%20cypress.jpeg");
       background-size: cover;
       background-position: center;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(216,169,75,.22);
+      border: 1px solid rgba(216,168,75,.30);
     }
 
     .stack {
@@ -341,9 +349,10 @@
       border-radius: 34px;
       padding: 34px;
       background:
-        radial-gradient(circle at top right, rgba(216,111,42,.18), transparent 18rem),
-        linear-gradient(135deg, rgba(19,37,39,.88), rgba(59,36,23,.72));
-      border: 1px solid rgba(216,169,75,.24);
+        radial-gradient(circle at top right, rgba(185,85,36,.28), transparent 18rem),
+        radial-gradient(circle at bottom left, rgba(31,111,115,.28), transparent 18rem),
+        linear-gradient(135deg, rgba(13,36,35,.95), rgba(42,24,15,.86));
+      border: 1px solid rgba(216,168,75,.34);
       box-shadow: var(--shadow);
     }
 
@@ -356,7 +365,7 @@
     }
 
     .panel p {
-      color: var(--muted);
+      color: var(--sand);
       font-size: 18px;
       margin: 0 0 24px;
     }
@@ -365,12 +374,12 @@
       min-height: 260px;
       border-radius: 30px;
       background:
-        linear-gradient(to top, rgba(7,16,20,.30), transparent),
+        linear-gradient(to top, rgba(6,19,19,.30), transparent),
         url("Screenshot%202023-10-20%20at%208.33.14%20PM.jpeg");
       background-size: cover;
       background-position: center;
-      border: 1px solid rgba(216,169,75,.22);
-      box-shadow: 0 20px 60px rgba(0,0,0,.42);
+      border: 1px solid rgba(216,168,75,.30);
+      box-shadow: 0 20px 60px rgba(0,0,0,.44);
     }
 
     .masonry {
@@ -384,8 +393,8 @@
       border-radius: 26px;
       background-size: cover;
       background-position: center;
-      border: 1px solid rgba(216,169,75,.22);
-      box-shadow: 0 18px 45px rgba(0,0,0,.34);
+      border: 1px solid rgba(216,168,75,.32);
+      box-shadow: 0 18px 45px rgba(0,0,0,.38);
       position: relative;
       overflow: hidden;
     }
@@ -395,8 +404,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(7,16,20,.34), transparent),
-        radial-gradient(circle at bottom left, rgba(216,111,42,.10), transparent 18rem);
+        linear-gradient(to top, rgba(6,19,19,.40), transparent),
+        radial-gradient(circle at bottom left, rgba(185,85,36,.16), transparent 18rem);
     }
 
     .tile:nth-child(1) {
@@ -429,7 +438,7 @@
       padding: 58px;
       border-radius: 38px;
       background:
-        linear-gradient(135deg, rgba(216,111,42,.90), rgba(215,169,75,.74)),
+        linear-gradient(135deg, rgba(185,85,36,.93), rgba(216,168,75,.78)),
         url("fire%20with%20friends.jpeg");
       background-size: cover;
       background-position: center;
@@ -440,7 +449,7 @@
       align-items: center;
       gap: 28px;
       overflow: hidden;
-      border: 1px solid rgba(255,247,232,.24);
+      border: 1px solid rgba(255,244,220,.28);
     }
 
     .cta h2 {
@@ -455,21 +464,21 @@
       margin: 0;
       max-width: 650px;
       font-size: 18px;
-      font-weight: 700;
-      color: rgba(31,19,13,.86);
+      font-weight: 800;
+      color: rgba(31,19,13,.88);
     }
 
     .cta .btn {
-      background: #071014;
+      background: var(--forest);
       color: var(--cream);
-      box-shadow: 0 20px 45px rgba(7,16,20,.35);
+      box-shadow: 0 20px 45px rgba(6,19,19,.38);
       white-space: nowrap;
     }
 
     footer {
       padding: 34px 0;
-      color: var(--muted);
-      border-top: 1px solid rgba(216,169,75,.20);
+      color: var(--sand);
+      border-top: 1px solid rgba(216,168,75,.24);
       background: #050807;
       font-size: 14px;
     }
@@ -673,1278 +682,6 @@
           <div class="tile" style="background-image:url('IMG_5786.JPG');"></div>
           <div class="tile" style="background-image:url('Screenshot%202023-10-20%20at%208.33.14%20PM.jpeg');"></div>
           <div class="tile" style="background-image:url('IMG_5787.JPG');"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="wrap">
-        <div class="cta">
-          <div>
-            <h2>Ready to check availability?</h2>
-            <p>
-              Contact Stay ARV for site details, pricing, current openings, and stay options.
-            </p>
-          </div>
-
-          <a class="btn" href="mailto:info@stayarv.com">Email Stay ARV</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <div>© <span id="year"></span> Stay ARV. All rights reserved.</div>
-      <div>stayarv.com</div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>        radial-gradient(circle at 12% 8%, rgba(249,115,22,.22), transparent 34rem),
-        radial-gradient(circle at 88% 0%, rgba(34,197,94,.13), transparent 32rem),
-        var(--bg);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .wrap {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .top {
-      background: #020617;
-      color: #dbeafe;
-      text-align: center;
-      padding: 10px 18px;
-      font-size: 14px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(5,8,22,.82);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav-inner {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 23px;
-      font-weight: 900;
-      letter-spacing: -.05em;
-    }
-
-    .mark {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      display: block;
-      object-fit: cover;
-      box-shadow: 0 14px 32px rgba(249,115,22,.35);
-      border: 1px solid rgba(255,255,255,.25);
-      background: #111827;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      color: var(--muted);
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 13px 22px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--orange), #fb923c);
-      color: white;
-      font-weight: 900;
-      box-shadow: 0 16px 36px rgba(249,115,22,.32);
-      border: 1px solid transparent;
-      transition: .2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-    }
-
-    .btn.outline {
-      background: rgba(255,255,255,.08);
-      border-color: var(--line);
-      box-shadow: none;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 780px;
-      display: grid;
-      align-items: center;
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(5,8,22,.98), rgba(5,8,22,.74) 44%, rgba(5,8,22,.16)),
-        url("sunset%20cypress%20lake.jpeg");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0;
-      height: 200px;
-      background: linear-gradient(to bottom, transparent, var(--bg));
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 780px;
-      padding: 100px 0 130px;
-    }
-
-    .tag {
-      display: inline-flex;
-      padding: 8px 13px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.1);
-      border: 1px solid var(--line);
-      color: #fde68a;
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 22px 0 18px;
-      font-size: clamp(50px, 8vw, 98px);
-      line-height: .9;
-      letter-spacing: -.085em;
-    }
-
-    .hero p {
-      max-width: 650px;
-      margin: 0 0 30px;
-      color: #dbe4ef;
-      font-size: clamp(18px, 2vw, 22px);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 34px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      max-width: 700px;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid var(--line);
-      backdrop-filter: blur(10px);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 27px;
-      letter-spacing: -.04em;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    section {
-      padding: 86px 0;
-    }
-
-    .section-head {
-      max-width: 760px;
-      margin-bottom: 32px;
-    }
-
-    .section-head h2 {
-      margin: 0 0 12px;
-      font-size: clamp(34px, 5vw, 60px);
-      line-height: .95;
-      letter-spacing: -.07em;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr 1fr;
-      gap: 18px;
-    }
-
-    .card {
-      position: relative;
-      overflow: hidden;
-      min-height: 340px;
-      padding: 26px;
-      border-radius: var(--radius);
-      background: var(--card);
-      border: 1px solid var(--line);
-      box-shadow: 0 18px 50px rgba(0,0,0,.28);
-      display: flex;
-      align-items: flex-end;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .card.offset {
-      transform: translateY(36px);
-    }
-
-    .card.small-offset {
-      transform: translateY(-18px);
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,.18));
-    }
-
-    .card-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 28px;
-      line-height: 1.05;
-      letter-spacing: -.05em;
-    }
-
-    .card p {
-      margin: 0;
-      color: #dbe4ef;
-    }
-
-    .split-chaos {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .big-photo {
-      min-height: 590px;
-      border-radius: 38px;
-      background:
-        linear-gradient(to top, rgba(0,0,0,.35), transparent),
-        url("kayak%20group%20cypress.jpeg");
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--line);
-    }
-
-    .stack {
-      display: grid;
-      gap: 24px;
-    }
-
-    .panel {
-      border-radius: 34px;
-      padding: 34px;
-      background:
-        radial-gradient(circle at top right, rgba(249,115,22,.16), transparent 18rem),
-        var(--card);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-
-    .panel h2 {
-      margin: 0 0 14px;
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: .95;
-      letter-spacing: -.07em;
-    }
-
-    .panel p {
-      color: var(--muted);
-      font-size: 18px;
-      margin: 0 0 24px;
-    }
-
-    .mini-photo {
-      min-height: 260px;
-      border-radius: 30px;
-      background:
-        linear-gradient(to top, rgba(0,0,0,.25), transparent),
-        url("Screenshot%202023-10-20%20at%208.33.14%20PM.jpeg");
-      background-size: cover;
-      background-position: center;
-      border: 1px solid var(--line);
-      box-shadow: 0 20px 60px rgba(0,0,0,.38);
-    }
-
-    .masonry {
-      display: grid;
-      grid-template-columns: 1.25fr .75fr 1fr .9fr;
-      grid-auto-rows: 150px;
-      gap: 15px;
-    }
-
-    .tile {
-      border-radius: 26px;
-      background-size: cover;
-      background-position: center;
-      border: 1px solid var(--line);
-      box-shadow: 0 18px 45px rgba(0,0,0,.32);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tile::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.34), transparent);
-    }
-
-    .tile:nth-child(1) {
-      grid-column: span 2;
-      grid-row: span 3;
-    }
-
-    .tile:nth-child(2) {
-      grid-row: span 2;
-    }
-
-    .tile:nth-child(3) {
-      grid-row: span 4;
-    }
-
-    .tile:nth-child(4) {
-      grid-row: span 2;
-    }
-
-    .tile:nth-child(5) {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    .tile:nth-child(6) {
-      grid-row: span 3;
-    }
-
-    .cta {
-      padding: 58px;
-      border-radius: 38px;
-      background:
-        linear-gradient(135deg, rgba(249,115,22,.92), rgba(250,204,21,.76)),
-        url("fire%20with%20friends.jpeg");
-      background-size: cover;
-      background-position: center;
-      color: #111827;
-      box-shadow: var(--shadow);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 28px;
-      overflow: hidden;
-    }
-
-    .cta h2 {
-      margin: 0 0 10px;
-      font-size: clamp(34px, 5vw, 60px);
-      line-height: .95;
-      letter-spacing: -.07em;
-    }
-
-    .cta p {
-      margin: 0;
-      max-width: 650px;
-      font-size: 18px;
-      font-weight: 700;
-      color: rgba(17,24,39,.84);
-    }
-
-    .cta .btn {
-      background: #111827;
-      color: white;
-      box-shadow: 0 20px 45px rgba(17,24,39,.25);
-      white-space: nowrap;
-    }
-
-    footer {
-      padding: 34px 0;
-      color: #94a3b8;
-      border-top: 1px solid var(--line);
-      background: #030712;
-      font-size: 14px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 980px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-content {
-        padding: 74px 0 96px;
-      }
-
-      .stats,
-      .cards,
-      .split-chaos,
-      .masonry {
-        grid-template-columns: 1fr;
-      }
-
-      .big-photo {
-        min-height: 390px;
-      }
-
-      .card.offset,
-      .card.small-offset {
-        transform: none;
-      }
-
-      .tile,
-      .tile:nth-child(1),
-      .tile:nth-child(2),
-      .tile:nth-child(3),
-      .tile:nth-child(4),
-      .tile:nth-child(5),
-      .tile:nth-child(6) {
-        grid-column: auto;
-        grid-row: auto;
-        min-height: 280px;
-      }
-
-      .cta {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 36px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .wrap {
-        width: min(100% - 28px, 1180px);
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="top">
-    Stay ARV — RV stays, lake days, campfires, kayaking, fishing, and outdoor memories.
-  </div>
-
-  <nav class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#">
-        <img class="mark" src="Screenshot%202023-10-20%20at%208.33.14%20PM.jpeg" alt="Stay ARV logo">
-        <span>Stay ARV</span>
-      </a>
-
-      <div class="nav-links">
-        <a href="#stay">Stay</a>
-        <a href="#adventure">Adventure</a>
-        <a href="#photos">Photos</a>
-        <a href="#contact" class="btn">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div class="wrap">
-      <div class="hero-content">
-        <span class="tag">Adventure RV</span>
-
-        <h1>Park close to the adventure.</h1>
-
-        <p>
-          A darker, cleaner RV stay brand built around lake days, campfires, cypress water,
-          kayaking, fishing, and a comfortable place to land.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn" href="#contact">Request Availability</a>
-          <a class="btn outline" href="#photos">View Photos</a>
-        </div>
-
-        <div class="stats">
-          <div class="stat">
-            <strong>RV</strong>
-            <span>Friendly stays</span>
-          </div>
-          <div class="stat">
-            <strong>Lake</strong>
-            <span>Outdoor atmosphere</span>
-          </div>
-          <div class="stat">
-            <strong>Camp</strong>
-            <span>Relaxed nights</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section id="stay">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Not just a place to park.</h2>
-          <p>
-            Stay ARV gives travelers a simple basecamp with a stronger outdoor feel than a
-            plain RV lot website.
-          </p>
-        </div>
-
-        <div class="cards">
-          <article class="card small-offset" style="background-image:url('IMG_5786.JPG');">
-            <div class="card-content">
-              <h3>Easy RV Stays</h3>
-              <p>For overnight guests, weekend visitors, and longer stays.</p>
-            </div>
-          </article>
-
-          <article class="card offset" style="background-image:url('fire%20with%20friends.jpeg');">
-            <div class="card-content">
-              <h3>Campfire Nights</h3>
-              <p>Friends, stories, and evenings that feel like the reason you came.</p>
-            </div>
-          </article>
-
-          <article class="card" style="background-image:url('IMG_5787.JPG');">
-            <div class="card-content">
-              <h3>Outdoor Basecamp</h3>
-              <p>A clean place to settle in before heading back outside.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="adventure">
-      <div class="wrap split-chaos">
-        <div class="big-photo"></div>
-
-        <div class="stack">
-          <div class="panel">
-            <span class="tag">Lake + woods + road trips</span>
-            <h2>Built around the good part of traveling.</h2>
-            <p>
-              The site leans into the strongest visuals: cypress water, sunsets, group trips,
-              campfires, fishing, and the feeling of being outside.
-            </p>
-            <a class="btn" href="#contact">Ask About a Stay</a>
-          </div>
-
-          <div class="mini-photo"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="photos">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Real photos, arranged loose.</h2>
-          <p>
-            No perfect symmetry. The layout intentionally feels staggered and more natural.
-          </p>
-        </div>
-
-        <div class="masonry">
-          <div class="tile" style="background-image:url('sunset%20cypress%20lake.jpeg');"></div>
-          <div class="tile" style="background-image:url('fire%20with%20friends.jpeg');"></div>
-          <div class="tile" style="background-image:url('kayak%20group%20cypress.jpeg');"></div>
-          <div class="tile" style="background-image:url('IMG_5786.JPG');"></div>
-          <div class="tile" style="background-image:url('Screenshot%202023-10-20%20at%208.33.14%20PM.jpeg');"></div>
-          <div class="tile" style="background-image:url('IMG_5787.JPG');"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="wrap">
-        <div class="cta">
-          <div>
-            <h2>Ready to check availability?</h2>
-            <p>
-              Contact Stay ARV for site details, pricing, current openings, and stay options.
-            </p>
-          </div>
-
-          <a class="btn" href="mailto:info@stayarv.com">Email Stay ARV</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <div>© <span id="year"></span> Stay ARV. All rights reserved.</div>
-      <div>stayarv.com</div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .wrap {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .top {
-      background: #020617;
-      color: #dbeafe;
-      text-align: center;
-      padding: 10px 18px;
-      font-size: 14px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(5,8,22,.82);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav-inner {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 23px;
-      font-weight: 900;
-      letter-spacing: -.05em;
-    }
-
-    .mark {
-      width: 44px;
-      height: 44px;
-      border-radius: 15px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--orange), var(--gold));
-      color: #111827;
-      font-weight: 950;
-      box-shadow: 0 14px 32px rgba(249,115,22,.35);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      color: var(--muted);
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 13px 22px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--orange), #fb923c);
-      color: white;
-      font-weight: 900;
-      box-shadow: 0 16px 36px rgba(249,115,22,.32);
-      border: 1px solid transparent;
-      transition: .2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-    }
-
-    .btn.outline {
-      background: rgba(255,255,255,.08);
-      border-color: var(--line);
-      box-shadow: none;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 780px;
-      display: grid;
-      align-items: center;
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(5,8,22,.98), rgba(5,8,22,.74) 44%, rgba(5,8,22,.16)),
-        url("sunset%20cypress%20lake.jpeg");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0;
-      height: 200px;
-      background: linear-gradient(to bottom, transparent, var(--bg));
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 780px;
-      padding: 100px 0 130px;
-    }
-
-    .tag {
-      display: inline-flex;
-      padding: 8px 13px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.1);
-      border: 1px solid var(--line);
-      color: #fde68a;
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 22px 0 18px;
-      font-size: clamp(50px, 8vw, 98px);
-      line-height: .9;
-      letter-spacing: -.085em;
-    }
-
-    .hero p {
-      max-width: 650px;
-      margin: 0 0 30px;
-      color: #dbe4ef;
-      font-size: clamp(18px, 2vw, 22px);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 34px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      max-width: 700px;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid var(--line);
-      backdrop-filter: blur(10px);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 27px;
-      letter-spacing: -.04em;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    section {
-      padding: 86px 0;
-    }
-
-    .section-head {
-      max-width: 760px;
-      margin-bottom: 32px;
-    }
-
-    .section-head h2 {
-      margin: 0 0 12px;
-      font-size: clamp(34px, 5vw, 60px);
-      line-height: .95;
-      letter-spacing: -.07em;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .split-chaos {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .big-photo {
-      min-height: 590px;
-      border-radius: 38px;
-      background:
-        linear-gradient(to top, rgba(0,0,0,.35), transparent),
-        url("kayak%20group%20cypress.jpeg");
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--line);
-    }
-
-    .stack {
-      display: grid;
-      gap: 24px;
-    }
-
-    .panel {
-      border-radius: 34px;
-      padding: 34px;
-      background:
-        radial-gradient(circle at top right, rgba(249,115,22,.16), transparent 18rem),
-        var(--card);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-
-    .panel h2 {
-      margin: 0 0 14px;
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: .95;
-      letter-spacing: -.07em;
-    }
-
-    .panel p {
-      color: var(--muted);
-      font-size: 18px;
-      margin: 0 0 24px;
-    }
-
-    .mini-photo {
-      min-height: 260px;
-      border-radius: 30px;
-      background-size: cover;
-      background-position: center;
-      border: 1px solid var(--line);
-      box-shadow: 0 20px 60px rgba(0,0,0,.38);
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr 1fr;
-      gap: 18px;
-    }
-
-    .card {
-      position: relative;
-      overflow: hidden;
-      min-height: 340px;
-      padding: 26px;
-      border-radius: var(--radius);
-      background: var(--card);
-      border: 1px solid var(--line);
-      box-shadow: 0 18px 50px rgba(0,0,0,.28);
-      display: flex;
-      align-items: flex-end;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .card.offset {
-      transform: translateY(36px);
-    }
-
-    .card.small-offset {
-      transform: translateY(-18px);
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,.18));
-    }
-
-    .card-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 28px;
-      line-height: 1.05;
-      letter-spacing: -.05em;
-    }
-
-    .card p {
-      margin: 0;
-      color: #dbe4ef;
-    }
-
-    .masonry {
-      display: grid;
-      grid-template-columns: 1.25fr .75fr 1fr .9fr;
-      grid-auto-rows: 150px;
-      gap: 15px;
-    }
-
-    .tile {
-      border-radius: 26px;
-      background-size: cover;
-      background-position: center;
-      border: 1px solid var(--line);
-      box-shadow: 0 18px 45px rgba(0,0,0,.32);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tile::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.34), transparent);
-    }
-
-    .tile:nth-child(1) { grid-column: span 2; grid-row: span 3; }
-    .tile:nth-child(2) { grid-row: span 2; }
-    .tile:nth-child(3) { grid-row: span 4; }
-    .tile:nth-child(4) { grid-row: span 2; }
-    .tile:nth-child(5) { grid-column: span 2; grid-row: span 2; }
-    .tile:nth-child(6) { grid-row: span 3; }
-    .tile:nth-child(7) { grid-column: span 2; grid-row: span 2; }
-
-    .cta {
-      padding: 58px;
-      border-radius: 38px;
-      background:
-        linear-gradient(135deg, rgba(249,115,22,.92), rgba(250,204,21,.76)),
-        url("fire%20with%20friends.jpeg");
-      background-size: cover;
-      background-position: center;
-      color: #111827;
-      box-shadow: var(--shadow);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 28px;
-      overflow: hidden;
-    }
-
-    .cta h2 {
-      margin: 0 0 10px;
-      font-size: clamp(34px, 5vw, 60px);
-      line-height: .95;
-      letter-spacing: -.07em;
-    }
-
-    .cta p {
-      margin: 0;
-      max-width: 650px;
-      font-size: 18px;
-      font-weight: 700;
-      color: rgba(17,24,39,.84);
-    }
-
-    .cta .btn {
-      background: #111827;
-      color: white;
-      box-shadow: 0 20px 45px rgba(17,24,39,.25);
-      white-space: nowrap;
-    }
-
-    footer {
-      padding: 34px 0;
-      color: #94a3b8;
-      border-top: 1px solid var(--line);
-      background: #030712;
-      font-size: 14px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 980px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-content {
-        padding: 74px 0 96px;
-      }
-
-      .stats,
-      .cards,
-      .split-chaos,
-      .masonry {
-        grid-template-columns: 1fr;
-      }
-
-      .big-photo {
-        min-height: 390px;
-      }
-
-      .card.offset,
-      .card.small-offset {
-        transform: none;
-      }
-
-      .tile,
-      .tile:nth-child(1),
-      .tile:nth-child(2),
-      .tile:nth-child(3),
-      .tile:nth-child(4),
-      .tile:nth-child(5),
-      .tile:nth-child(6),
-      .tile:nth-child(7) {
-        grid-column: auto;
-        grid-row: auto;
-        min-height: 280px;
-      }
-
-      .cta {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 36px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .wrap {
-        width: min(100% - 28px, 1180px);
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="top">
-    Stay ARV — RV stays, lake days, campfires, kayaking, fishing, and outdoor memories.
-  </div>
-
-  <nav class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#">
-        <span class="mark">ARV</span>
-        <span>Stay ARV</span>
-      </a>
-
-      <div class="nav-links">
-        <a href="#stay">Stay</a>
-        <a href="#adventure">Adventure</a>
-        <a href="#photos">Photos</a>
-        <a href="#contact" class="btn">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div class="wrap">
-      <div class="hero-content">
-        <span class="tag">Adventure RV</span>
-
-        <h1>Park close to the adventure.</h1>
-
-        <p>
-          A darker, cleaner RV stay brand built around lake days, campfires, cypress water,
-          kayaking, fishing, and a comfortable place to land.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn" href="#contact">Request Availability</a>
-          <a class="btn outline" href="#photos">View Photos</a>
-        </div>
-
-        <div class="stats">
-          <div class="stat">
-            <strong>RV</strong>
-            <span>Friendly stays</span>
-          </div>
-          <div class="stat">
-            <strong>Lake</strong>
-            <span>Outdoor atmosphere</span>
-          </div>
-          <div class="stat">
-            <strong>Camp</strong>
-            <span>Relaxed nights</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section id="stay">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Not just a place to park.</h2>
-          <p>
-            Stay ARV gives travelers a simple basecamp with a stronger outdoor feel than a
-            plain RV lot website.
-          </p>
-        </div>
-
-        <div class="cards">
-          <article class="card small-offset" style="background-image:url('IMG_5786.JPG');">
-            <div class="card-content">
-              <h3>Easy RV Stays</h3>
-              <p>For overnight guests, weekend visitors, and longer stays.</p>
-            </div>
-          </article>
-
-          <article class="card offset" style="background-image:url('fire%20with%20friends.jpeg');">
-            <div class="card-content">
-              <h3>Campfire Nights</h3>
-              <p>Friends, stories, and evenings that feel like the reason you came.</p>
-            </div>
-          </article>
-
-          <article class="card" style="background-image:url('IMG_5787.JPG');">
-            <div class="card-content">
-              <h3>Outdoor Basecamp</h3>
-              <p>A clean place to settle in before heading back outside.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="adventure">
-      <div class="wrap split-chaos">
-        <div class="big-photo"></div>
-
-        <div class="stack">
-          <div class="panel">
-            <span class="tag">Lake + woods + road trips</span>
-            <h2>Built around the good part of traveling.</h2>
-            <p>
-              The site leans into the strongest visuals: cypress water, sunsets, group trips,
-              campfires, fishing, and the feeling of being outside.
-            </p>
-            <a class="btn" href="#contact">Ask About a Stay</a>
-          </div>
-
-          <div class="mini-photo" style="background-image:url('JPEG%20image-9D7C978B5F3A-1.jpeg');"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="photos">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Real photos, arranged loose.</h2>
-          <p>
-            No perfect symmetry. The layout intentionally feels staggered and more natural.
-          </p>
-        </div>
-
-        <div class="masonry">
-          <div class="tile" style="background-image:url('sunset%20cypress%20lake.jpeg');"></div>
-          <div class="tile" style="background-image:url('fire%20with%20friends.jpeg');"></div>
-          <div class="tile" style="background-image:url('kayak%20group%20cypress.jpeg');"></div>
-          <div class="tile" style="background-image:url('IMG_5786.JPG');"></div>
-          <div class="tile" style="background-image:url('Screenshot%202023-10-20%20at%208.33.14%20PM.jpeg');"></div>
-          <div class="tile" style="background-image:url('IMG_5787.JPG');"></div>
-          <div class="tile" style="background-image:url('JPEG%20image-9D7C978B5F3A-1.jpeg');"></div>
         </div>
       </div>
     </section>
