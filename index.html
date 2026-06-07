@@ -429,6 +429,43 @@
       color: #f0ddb8;
     }
 
+    .park-map-section {
+      padding-top: 24px;
+    }
+
+    .park-map-card {
+      border-radius: 38px;
+      padding: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(216,168,75,.16), transparent 18rem),
+        linear-gradient(135deg, rgba(13,36,35,.95), rgba(42,24,15,.84));
+      border: 1px solid rgba(216,168,75,.34);
+      box-shadow: var(--shadow);
+    }
+
+    .park-map-card h2 {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: .95;
+      letter-spacing: -.07em;
+      color: var(--cream);
+    }
+
+    .park-map-card p {
+      margin: 0 0 24px;
+      color: var(--sand);
+      font-size: 18px;
+    }
+
+    .park-map-img {
+      width: 100%;
+      display: block;
+      border-radius: 28px;
+      border: 1px solid rgba(216,168,75,.30);
+      box-shadow: 0 18px 50px rgba(0,0,0,.38);
+      background: rgba(255,244,220,.06);
+    }
+
     .amenity-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -729,7 +766,8 @@
 
       .price-card,
       .info-panel,
-      .location-card {
+      .location-card,
+      .park-map-card {
         padding: 24px;
       }
 
@@ -876,6 +914,19 @@
               <p>Each RV spot includes water, sewer, electricity, and WiFi in the monthly price.</p>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="park-map-section" id="park-map">
+      <div class="wrap">
+        <div class="park-map-card">
+          <h2>Park map.</h2>
+          <p>
+            Use the map below to get a better feel for the layout, RV spots, access points, and park areas.
+          </p>
+
+          <img class="park-map-img" src="park%20map.png" alt="Adventure RV Park map">
         </div>
       </div>
     </section>
