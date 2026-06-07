@@ -186,6 +186,1084 @@
       grid-template-columns: 1.15fr .85fr;
       gap: 34px;
       align-items: center;
+      padding: 80px 0 130px;
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .hero-logo {
+      width: 148px;
+      height: 148px;
+      border-radius: 34px;
+      display: block;
+      object-fit: cover;
+      margin-bottom: 22px;
+      border: 2px solid rgba(216,168,75,.55);
+      box-shadow:
+        0 0 0 8px rgba(47,58,36,.34),
+        0 28px 70px rgba(0,0,0,.48),
+        0 18px 44px rgba(185,85,36,.30);
+      background: #111827;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(42,24,15,.82);
+      border: 1px solid rgba(216,168,75,.58);
+      color: #f9d77d;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 28px rgba(0,0,0,.25);
+    }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(50px, 8vw, 94px);
+      line-height: .9;
+      letter-spacing: -.085em;
+      color: var(--cream);
+      text-shadow: 0 6px 30px rgba(0,0,0,.42);
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 0 30px;
+      color: #f0ddb8;
+      font-size: clamp(18px, 2vw, 22px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .quick-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 760px;
+    }
+
+    .fact {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(13,36,35,.72);
+      border: 1px solid rgba(216,168,75,.34);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 14px 35px rgba(0,0,0,.22);
+    }
+
+    .fact strong {
+      display: block;
+      font-size: 24px;
+      letter-spacing: -.04em;
+      color: var(--cream);
+      line-height: 1.05;
+    }
+
+    .fact span {
+      color: var(--sand);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .price-card {
+      background:
+        radial-gradient(circle at top right, rgba(216,168,75,.22), transparent 16rem),
+        linear-gradient(135deg, rgba(13,36,35,.94), rgba(42,24,15,.86));
+      border: 1px solid rgba(216,168,75,.38);
+      border-radius: 34px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .price-card .small {
+      color: var(--sand);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 13px;
+    }
+
+    .price {
+      font-size: clamp(54px, 7vw, 78px);
+      line-height: .9;
+      letter-spacing: -.08em;
+      font-weight: 950;
+      margin: 14px 0 8px;
+      color: var(--cream);
+    }
+
+    .price span {
+      font-size: 23px;
+      letter-spacing: -.03em;
+      color: var(--sand);
+    }
+
+    .included {
+      margin: 22px 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .included div {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px 13px;
+      border-radius: 16px;
+      background: rgba(255,244,220,.07);
+      border: 1px solid rgba(234,214,165,.16);
+      color: #f0ddb8;
+      font-weight: 800;
+    }
+
+    .check {
+      color: #c8d6a0;
+      font-weight: 950;
+    }
+
+    .note {
+      color: var(--sand);
+      font-size: 14px;
+      margin-top: 14px;
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .section-head {
+      max-width: 780px;
+      margin-bottom: 32px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: .95;
+      letter-spacing: -.07em;
+      color: var(--cream);
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--sand);
+      font-size: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr 1fr;
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      min-height: 350px;
+      padding: 26px;
+      border-radius: var(--radius);
+      background: rgba(13,36,35,.82);
+      border: 1px solid rgba(216,168,75,.30);
+      box-shadow: 0 18px 50px rgba(0,0,0,.38);
+      display: flex;
+      align-items: flex-end;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card.offset {
+      transform: translateY(36px);
+    }
+
+    .card.small-offset {
+      transform: translateY(-18px);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(6,19,19,.94), rgba(42,24,15,.30)),
+        radial-gradient(circle at bottom left, rgba(185,85,36,.26), transparent 20rem),
+        radial-gradient(circle at top right, rgba(31,111,115,.18), transparent 16rem);
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.05;
+      letter-spacing: -.05em;
+      color: var(--cream);
+    }
+
+    .card p {
+      margin: 0;
+      color: #f0ddb8;
+    }
+
+    .amenity-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .amenity {
+      background:
+        linear-gradient(135deg, rgba(13,36,35,.86), rgba(47,58,36,.58));
+      border: 1px solid rgba(216,168,75,.25);
+      border-radius: 22px;
+      padding: 20px;
+      min-height: 150px;
+      box-shadow: 0 16px 42px rgba(0,0,0,.28);
+    }
+
+    .amenity-icon {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .amenity h3 {
+      margin: 0 0 6px;
+      font-size: 19px;
+      letter-spacing: -.035em;
+      color: var(--cream);
+    }
+
+    .amenity p {
+      margin: 0;
+      color: var(--sand);
+      font-size: 15px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .photo-panel {
+      min-height: 620px;
+      border-radius: 38px;
+      background:
+        linear-gradient(to top, rgba(6,19,19,.42), transparent),
+        url("kayak%20group%20cypress.jpeg");
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(216,168,75,.30);
+    }
+
+    .info-panel {
+      border-radius: 34px;
+      padding: 34px;
+      background:
+        radial-gradient(circle at top right, rgba(185,85,36,.28), transparent 18rem),
+        radial-gradient(circle at bottom left, rgba(47,58,36,.38), transparent 18rem),
+        linear-gradient(135deg, rgba(13,36,35,.95), rgba(42,24,15,.86));
+      border: 1px solid rgba(216,168,75,.34);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .info-panel h2 {
+      margin: 0 0 14px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: .95;
+      letter-spacing: -.07em;
+      color: var(--cream);
+    }
+
+    .info-panel p {
+      color: var(--sand);
+      font-size: 18px;
+      margin: 0 0 22px;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      margin: 8px 0 26px;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 15px;
+      border-radius: 18px;
+      background: rgba(255,244,220,.07);
+      border: 1px solid rgba(234,214,165,.17);
+    }
+
+    .list-item strong {
+      color: var(--cream);
+    }
+
+    .list-item span:last-child {
+      color: var(--sand);
+    }
+
+    .location-card {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+      align-items: stretch;
+      background:
+        linear-gradient(135deg, rgba(13,36,35,.92), rgba(42,24,15,.82));
+      border: 1px solid rgba(216,168,75,.32);
+      border-radius: 38px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .map-box {
+      border-radius: 28px;
+      background:
+        linear-gradient(to top, rgba(6,19,19,.25), transparent),
+        url("IMG_5787.JPG");
+      background-size: cover;
+      background-position: center;
+      min-height: 390px;
+      border: 1px solid rgba(216,168,75,.24);
+    }
+
+    .location-details {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .location-details h2 {
+      margin: 0 0 14px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: .95;
+      letter-spacing: -.07em;
+    }
+
+    .address {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--cream);
+      margin: 8px 0 18px;
+      line-height: 1.25;
+    }
+
+    .distance {
+      display: inline-flex;
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(47,58,36,.70);
+      border: 1px solid rgba(216,168,75,.34);
+      color: var(--sand);
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .policy {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(42,24,15,.62);
+      border: 1px solid rgba(216,168,75,.28);
+      color: var(--sand);
+      font-size: 15px;
+    }
+
+    .masonry {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr 1fr .9fr;
+      grid-auto-rows: 150px;
+      gap: 15px;
+    }
+
+    .tile {
+      border-radius: 26px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(216,168,75,.32);
+      box-shadow: 0 18px 45px rgba(0,0,0,.38);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(6,19,19,.40), transparent),
+        radial-gradient(circle at bottom left, rgba(185,85,36,.16), transparent 18rem);
+    }
+
+    .tile:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 3;
+    }
+
+    .tile:nth-child(2) {
+      grid-row: span 2;
+    }
+
+    .tile:nth-child(3) {
+      grid-row: span 4;
+    }
+
+    .tile:nth-child(4) {
+      grid-row: span 2;
+    }
+
+    .tile:nth-child(5) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .tile:nth-child(6) {
+      grid-row: span 3;
+    }
+
+    .cta {
+      padding: 58px;
+      border-radius: 38px;
+      background:
+        linear-gradient(135deg, rgba(47,58,36,.94), rgba(70,89,54,.78)),
+        url("fire%20with%20friends.jpeg");
+      background-size: cover;
+      background-position: center;
+      color: var(--cream);
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(234,214,165,.30);
+    }
+
+    .cta h2 {
+      margin: 0 0 10px;
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: .95;
+      letter-spacing: -.07em;
+      color: var(--cream);
+      text-shadow: 0 8px 28px rgba(0,0,0,.34);
+    }
+
+    .cta p {
+      margin: 0;
+      max-width: 650px;
+      font-size: 18px;
+      font-weight: 800;
+      color: #f0ddb8;
+      text-shadow: 0 6px 22px rgba(0,0,0,.25);
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    footer {
+      padding: 34px 0;
+      color: var(--sand);
+      border-top: 1px solid rgba(216,168,75,.24);
+      background: #050807;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid,
+      .split,
+      .location-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        padding: 74px 0 96px;
+      }
+
+      .hero-logo {
+        width: 124px;
+        height: 124px;
+        border-radius: 28px;
+      }
+
+      .quick-facts,
+      .cards,
+      .amenity-grid,
+      .masonry {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-panel,
+      .map-box {
+        min-height: 390px;
+      }
+
+      .card.offset,
+      .card.small-offset {
+        transform: none;
+      }
+
+      .tile,
+      .tile:nth-child(1),
+      .tile:nth-child(2),
+      .tile:nth-child(3),
+      .tile:nth-child(4),
+      .tile:nth-child(5),
+      .tile:nth-child(6) {
+        grid-column: auto;
+        grid-row: auto;
+        min-height: 280px;
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 36px;
+      }
+
+      .cta-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .wrap {
+        width: min(100% - 28px, 1180px);
+      }
+
+      h1 {
+        font-size: clamp(46px, 18vw, 72px);
+      }
+
+      .price-card {
+        padding: 24px;
+      }
+
+      .price {
+        font-size: 58px;
+      }
+
+      .brand span {
+        font-size: 20px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top">
+    <strong>Adventure RV Park on Lake Atkins</strong> — 30 and 50 amp spots with water, sewer, electricity, and WiFi included.
+  </div>
+
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#">
+        <img class="mark" src="Screenshot%202023-10-20%20at%208.33.14%20PM.jpeg" alt="Adventure RV Park logo">
+        <span>Adventure RV Park</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#spots">RV Spots</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#location">Location</a>
+        <a href="#contact" class="btn">Call/Text</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-content">
+        <img class="hero-logo" src="Screenshot%202023-10-20%20at%208.33.14%20PM.jpeg" alt="Adventure RV Park logo">
+
+        <span class="tag">Lake Atkins • Atkins, Arkansas</span>
+
+        <h1>Settle in by the lake.</h1>
+
+        <p>
+          Adventure RV Park sits on 15 peaceful acres stretching from the main highway to Lake Atkins,
+          with spacious RV spots, full hookups, fishing docks, a boat launch, and the everyday comforts
+          that make a stay easier.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="tel:14796410032">Call/Text 479-641-0032</a>
+          <a class="btn outline" href="#spots">View Spot Details</a>
+        </div>
+
+        <div class="quick-facts">
+          <div class="fact">
+            <strong>15 acres</strong>
+            <span>Peaceful seclusion</span>
+          </div>
+          <div class="fact">
+            <strong>Lakefront</strong>
+            <span>Lake Atkins access</span>
+          </div>
+          <div class="fact">
+            <strong>12 min</strong>
+            <span>From the big Walmart</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="price-card" id="spots">
+        <div class="small">RV spot pricing</div>
+
+        <div class="price">$425 <span>/ month</span></div>
+
+        <p>
+          Spacious 30 and 50 amp RV spots with full hookups and essential utilities included at each spot.
+        </p>
+
+        <div class="included">
+          <div><span class="check">✓</span> Water included</div>
+          <div><span class="check">✓</span> Sewer included</div>
+          <div><span class="check">✓</span> Electricity included</div>
+          <div><span class="check">✓</span> WiFi included</div>
+          <div><span class="check">✓</span> 30 and 50 amp spots available</div>
+          <div><span class="check">✓</span> Laundromat use available for $25 more</div>
+        </div>
+
+        <a class="btn" href="tel:14796410032">Check Availability</a>
+
+        <div class="note">
+          Availability can change. Call or text for current openings, spot details, and move-in timing.
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Lake access, room to breathe, and the basics already handled.</h2>
+          <p>
+            Adventure RV Park is built for guests who want a quiet place with practical utilities, outdoor space,
+            and easy access to Lake Atkins.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card small-offset" style="background-image:url('sunset%20cypress%20lake.jpeg');">
+            <div class="card-content">
+              <h3>Lake in the front</h3>
+              <p>Enjoy the setting along Lake Atkins with water, sunsets, fishing, and a calmer pace.</p>
+            </div>
+          </article>
+
+          <article class="card offset" style="background-image:url('fire%20with%20friends.jpeg');">
+            <div class="card-content">
+              <h3>Space to relax</h3>
+              <p>15 acres of peaceful seclusion between the main highway and the lake.</p>
+            </div>
+          </article>
+
+          <article class="card" style="background-image:url('IMG_5786.JPG');">
+            <div class="card-content">
+              <h3>Full hookups</h3>
+              <p>Each RV spot includes water, sewer, electricity, and WiFi in the monthly price.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="amenities">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Park amenities that make the stay easier.</h2>
+          <p>
+            From full hookups to on-site facilities and outdoor gathering spaces, the park is set up for convenience.
+          </p>
+        </div>
+
+        <div class="amenity-grid">
+          <div class="amenity">
+            <div class="amenity-icon">⚡</div>
+            <h3>30 and 50 Amp Spots</h3>
+            <p>Spacious RV spots with electrical service options for different rigs.</p>
+          </div>
+
+          <div class="amenity">
+            <div class="amenity-icon">💧</div>
+            <h3>Utilities Included</h3>
+            <p>Water, sewer, electricity, and WiFi are included at each RV spot.</p>
+          </div>
+
+          <div class="amenity">
+            <div class="amenity-icon">🧺</div>
+            <h3>On-Site Laundromat</h3>
+            <p>Laundromat use is available for $25 more.</p>
+          </div>
+
+          <div class="amenity">
+            <div class="amenity-icon">🚿</div>
+            <h3>Bathroom and Showers</h3>
+            <p>Community bathroom and shower facilities are available on site.</p>
+          </div>
+
+          <div class="amenity">
+            <div class="amenity-icon">🎣</div>
+            <h3>Three Fishing Docks</h3>
+            <p>Enjoy easy access to fishing without leaving the park.</p>
+          </div>
+
+          <div class="amenity">
+            <div class="amenity-icon">🚤</div>
+            <h3>Boat Launch</h3>
+            <p>A convenient boat launch gives guests direct access to the water.</p>
+          </div>
+
+          <div class="amenity">
+            <div class="amenity-icon">🌊</div>
+            <h3>Private Fishing Pond</h3>
+            <p>Fish the private pond on site, plus Lake Atkins in the front.</p>
+          </div>
+
+          <div class="amenity">
+            <div class="amenity-icon">🌲</div>
+            <h3>Large Pavilion</h3>
+            <p>A covered gathering space for relaxing, eating, and enjoying the outdoors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div class="photo-panel"></div>
+
+        <div class="info-panel">
+          <span class="tag">Quiet setting • Practical setup</span>
+
+          <h2>Comfortable enough to stay awhile.</h2>
+
+          <p>
+            The park gives guests a low-stress setup: utilities included, WiFi at each spot,
+            on-site laundry access, bathroom and shower facilities, and outdoor space to enjoy after the day is done.
+          </p>
+
+          <div class="list">
+            <div class="list-item">
+              <span class="check">✓</span>
+              <div>
+                <strong>Simple monthly pricing</strong><br>
+                <span>$425 per month with water, sewer, electricity, and WiFi included.</span>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <span class="check">✓</span>
+              <div>
+                <strong>Outdoor recreation on site</strong><br>
+                <span>Three fishing docks, boat launch, private fishing pond, and Lake Atkins access.</span>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <span class="check">✓</span>
+              <div>
+                <strong>Convenient essentials</strong><br>
+                <span>On-site laundromat, community bathroom and showers, pavilion, and WiFi.</span>
+              </div>
+            </div>
+          </div>
+
+          <a class="btn" href="tel:14796410032">Call/Text 479-641-0032</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="wrap">
+        <div class="location-card">
+          <div class="map-box"></div>
+
+          <div class="location-details">
+            <span class="tag">Located in Atkins, Arkansas</span>
+
+            <h2>Close to town. Right by the lake.</h2>
+
+            <div class="address">
+              152 Launch Road<br>
+              Atkins, AR 72823
+            </div>
+
+            <div class="distance">
+              Only 12 minutes from the big Walmart
+            </div>
+
+            <p>
+              Adventure RV Park is nestled on the serene shores of Lake Atkins, with 15 acres stretching
+              from the main highway to the lake and nothing in between.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn" href="https://www.google.com/maps/search/?api=1&query=152%20Launch%20Road%20Atkins%20AR%2072823" target="_blank" rel="noopener">Get Directions</a>
+              <a class="btn outline" href="tel:14796410032">Call/Text</a>
+            </div>
+
+            <div class="policy">
+              Pet policy note: no pitbull breeds allowed.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="photos">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Lake days, campfires, and room to unwind.</h2>
+          <p>
+            A real outdoor setting with water access, open space, and a quiet place to come back to.
+          </p>
+        </div>
+
+        <div class="masonry">
+          <div class="tile" style="background-image:url('sunset%20cypress%20lake.jpeg');"></div>
+          <div class="tile" style="background-image:url('fire%20with%20friends.jpeg');"></div>
+          <div class="tile" style="background-image:url('kayak%20group%20cypress.jpeg');"></div>
+          <div class="tile" style="background-image:url('IMG_5786.JPG');"></div>
+          <div class="tile" style="background-image:url('Screenshot%202023-10-20%20at%208.33.14%20PM.jpeg');"></div>
+          <div class="tile" style="background-image:url('IMG_5787.JPG');"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="cta">
+          <div>
+            <h2>Ready to check availability?</h2>
+            <p>
+              Message, call, or text Adventure RV Park for current openings, spot details, pricing, and arrival timing.
+            </p>
+          </div>
+
+          <div class="cta-actions">
+            <a class="btn" href="tel:14796410032">Call/Text 479-641-0032</a>
+            <a class="btn outline" href="sms:14796410032">Message Here</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>© <span id="year"></span> Adventure RV Park. All rights reserved.</div>
+      <div>152 Launch Road, Atkins, AR 72823</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 12% 4%, rgba(185,85,36,.32), transparent 28rem),
+        radial-gradient(circle at 88% 2%, rgba(31,111,115,.38), transparent 32rem),
+        linear-gradient(180deg, var(--forest), var(--forest2) 48%, var(--deep));
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .top {
+      background: #0b1c1b;
+      color: var(--sand);
+      text-align: center;
+      padding: 10px 18px;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(216,168,75,.26);
+    }
+
+    .top strong {
+      color: var(--cream);
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background:
+        linear-gradient(90deg, rgba(6,19,19,.96), rgba(42,24,15,.90));
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(216,168,75,.32);
+      box-shadow: 0 12px 40px rgba(0,0,0,.28);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: -.05em;
+      color: var(--cream);
+    }
+
+    .mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: block;
+      object-fit: cover;
+      box-shadow:
+        0 0 0 2px rgba(216,168,75,.34),
+        0 14px 32px rgba(185,85,36,.38);
+      border: 1px solid rgba(255,244,220,.32);
+      background: #111827;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      color: var(--sand);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .nav-links a:hover {
+      color: var(--cream);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--army3), var(--army2));
+      color: var(--cream);
+      font-weight: 900;
+      box-shadow: 0 16px 36px rgba(31,42,24,.48);
+      border: 1px solid rgba(234,214,165,.28);
+      transition: .2s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.12);
+    }
+
+    .btn.outline {
+      background: rgba(47,58,36,.52);
+      border-color: rgba(216,168,75,.48);
+      color: var(--cream);
+      box-shadow: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 820px;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(6,19,19,.98), rgba(13,36,35,.82) 47%, rgba(42,24,15,.22)),
+        radial-gradient(circle at 75% 65%, rgba(216,168,75,.18), transparent 22rem),
+        url("sunset%20cypress%20lake.jpeg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 210px;
+      background: linear-gradient(to bottom, transparent, var(--forest));
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 34px;
+      align-items: center;
       padding: 92px 0 130px;
     }
 
