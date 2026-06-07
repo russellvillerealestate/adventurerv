@@ -1,11 +1,129 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Adventure RV</title>
-</head>
-<body>
-  <h1>Adventure RV</h1>
-  <p>Coming soon.</p>
-</body>
-</html>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stay ARV | Adventure RV</title>
+  <meta name="description" content="Stay ARV offers a comfortable RV stay with convenient access, practical amenities, and a clean, welcoming setting." />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --light: #f8fafc;
+      --accent: #f97316;
+      --accent-dark: #c2410c;
+      --green: #16a34a;
+      --border: #e2e8f0;
+      --shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--light);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      background: #020617;
+      color: white;
+      padding: 14px 22px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      font-size: 24px;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #facc15);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(249, 115, 22, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-size: 15px;
+      color: #334155;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-weight: 800;
+      border: none;
+      box-shadow: 0 12px 26px rgba(249, 115, 22, 0.32);
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .button.secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(2, 6, 23, 0.86), rgba(15, 23, 42, 0.72)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?
