@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Camper Questionnaire | Adventure RV Park</title><link rel="stylesheet" href="site.css"><link rel="stylesheet" href="signup.css"></head><body><nav class="nav"><div class="wrap nav-inner"><a class="brand" href="/">Adventure RV Park</a><a href="rules.html">Park rules</a></div></nav><main class="flow"><p>MONTHLY STAYS</p><h1>A few questions before you get started.</h1>
+<p>Please answer honestly and read the park rules before continuing. Completing this questionnaire does not reserve a spot.</p>
+<form id="camper-check" aria-describedby="gate-status">
+<fieldset><legend>Is there any visible damage to your camper?</legend><label class="choice"><input type="radio" name="damage" value="yes" required> Yes</label><label class="choice"><input type="radio" name="damage" value="no" required> No</label></fieldset>
+<fieldset><legend>Will you keep your camper clean?</legend><label class="choice"><input type="radio" name="clean" value="yes" required> Yes</label><label class="choice"><input type="radio" name="clean" value="no" required> No</label></fieldset>
+<p><a href="rules.html" target="_blank" rel="noopener">Read all park rules (opens in a new tab)</a></p>
+<label class="agreement"><input type="checkbox" name="rules" required><span>I've read and agree with all the park rules stated at stayarv.com.</span></label>
+<p id="gate-status" role="status" aria-live="polite">Answer both questions and agree to the park rules to continue.</p>
+<button type="submit" class="btn" id="continue" disabled aria-controls="next-step">Continue</button>
+</form>
+<noscript><p class="notice">Please enable JavaScript to complete the questionnaire, or call <a href="tel:14796410032">479-641-0032</a> for help.</p></noscript>
+<section id="next-step" hidden aria-labelledby="next-title" class="notice"><h2 id="next-title" tabindex="-1">Next: confirm availability.</h2><p>Call or text the park with your preferred move-in date. Monthly rent is $425, or $450 with laundromat access. Management will confirm an available spot and arrange your signup and Square invoice.</p><p>Online booking and payment through this website are not available yet. Your answers have not been sent or saved.</p><div class="actions"><a class="btn" href="sms:14796410032">Text the park</a><a class="btn outline" href="tel:14796410032">Call 479-641-0032</a></div></section>
+<script src="signup.js" defer></script></main><footer><div class="wrap footer-inner"><span>Adventure RV Park · 152 Launch Road, Atkins, AR 72823</span><a href="tel:14796410032">479-641-0032</a></div></footer></body></html>
