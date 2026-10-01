@@ -781,3 +781,12 @@
       }
     }
   
+/* Application buttons echo the logo's warm yellow and red. */
+.btn.application-btn {
+  background: linear-gradient(110deg, #ffdc65 0%, #f7a04e 55%, #ed7352 100%);
+  color: #251006;
+  border: 1px solid #f9b45a;
+  box-shadow: 0 10px 28px rgba(185, 60, 30, .32);
+}
+.nav-links .application-btn:hover { color: #251006; }
+.application-btn:focus-visible { outline: 3px solid #fff4dc; outline-offset: 4px; }
