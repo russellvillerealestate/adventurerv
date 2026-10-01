@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-01T06:17:48.174Z",
+  "spots": [
+    {
+      "spot": 1,
+      "status": "Occupied"
+    },
+    {
+      "spot": 2,
+      "status": "Occupied"
+    },
+    {
+      "spot": 3,
+      "status": "Occupied"
+    },
+    {
+      "spot": 4,
+      "status": "Occupied"
+    },
+    {
+      "spot": 5,
+      "status": "Occupied"
+    },
+    {
+      "spot": 6,
+      "status": "Occupied"
+    },
+    {
+      "spot": 7,
+      "status": "Occupied"
+    },
+    {
+      "spot": 8,
+      "status": "Occupied"
+    },
+    {
+      "spot": 9,
+      "status": "Occupied"
+    },
+    {
+      "spot": 10,
+      "status": "Occupied"
+    },
+    {
+      "spot": 11,
+      "status": "Occupied"
+    },
+    {
+      "spot": 12,
+      "status": "Occupied"
+    },
+    {
+      "spot": 13,
+      "status": "Occupied"
+    },
+    {
+      "spot": 14,
+      "status": "Occupied"
+    },
+    {
+      "spot": 15,
+      "status": "Occupied"
+    },
+    {
+      "spot": 16,
+      "status": "Occupied"
+    },
+    {
+      "spot": 17,
+      "status": "Occupied"
+    },
+    {
+      "spot": 18,
+      "status": "Occupied"
+    },
+    {
+      "spot": 19,
+      "status": "Occupied"
+    },
+    {
+      "spot": 20,
+      "status": "Occupied"
+    },
+    {
+      "spot": 21,
+      "status": "Occupied"
+    },
+    {
+      "spot": 22,
+      "status": "Occupied"
+    },
+    {
+      "spot": 23,
+      "status": "Occupied"
+    },
+    {
+      "spot": 24,
+      "status": "Occupied"
+    },
+    {
+      "spot": 25,
+      "status": "Occupied"
+    },
+    {
+      "spot": 26,
+      "status": "Occupied"
+    },
+    {
+      "spot": 27,
+      "status": "Occupied"
+    },
+    {
+      "spot": 28,
+      "status": "Occupied"
+    },
+    {
+      "spot": 29,
+      "status": "Occupied"
+    },
+    {
+      "spot": 30,
+      "status": "Occupied"
+    },
+    {
+      "spot": 31,
+      "status": "Occupied"
+    },
+    {
+      "spot": 32,
+      "status": "Occupied"
+    },
+    {
+      "spot": 33,
+      "status": "Occupied"
+    },
+    {
+      "spot": 34,
+      "status": "Occupied"
+    },
+    {
+      "spot": 35,
+      "status": "Occupied"
+    },
+    {
+      "spot": 36,
+      "status": "Occupied"
+    }
+  ]
+}
