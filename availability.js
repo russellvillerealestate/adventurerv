@@ -6,7 +6,7 @@
   if (!image) return;
   const positions = [[78.1,74.1],[80,69],[81.2,64],[82.4,59.1],[83.2,54.8],[83.8,50],[84.1,45.6],[84.4,40.7],[84.6,35.5],[73.1,26.6],[72.2,32.5],[71.2,39.2],[69.9,44.8],[69.2,51.5],[68,57.5],[66.7,63.2],[56.6,39],[56.6,44.8],[56,50.8],[55.5,57.3],[10.2,77.8],[10.2,71.7],[10.2,66],[10.2,60.2],[10.2,54.4],[10.2,48.5],[10.2,42.8],[10.2,37.1],[10.2,31.8],[10.2,26.1],[10.2,20.5],[10.2,14.3],[10.2,8.6],[22.3,64.4],[22.3,69.6],[22.6,75.5]];
   const thirtyAmpSpots = new Set([1,2,3,4,7,8,9,10,15,16]);
-  const amperage = spot => thirtyAmpSpots.has(spot) ? '30 amp' : '50 amp';
+  const amperage = spot => thirtyAmpSpots.has(spot) ? '30 amp' : '50/30 amp';
   function labelItem(item, spot, status) {
     const title = document.createElement('span');
     title.textContent = `${spot} · ${status}`;
