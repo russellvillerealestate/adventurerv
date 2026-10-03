@@ -11,7 +11,7 @@
     const title = document.createElement('span');
     title.textContent = `${spot} · ${status}`;
     const amps = document.createElement('small');
-    amps.className = 'availability-amperage';
+    amps.className = 'availability-amperage' + (thirtyAmpSpots.has(spot) ? ' availability-amperage-30' : '');
     amps.textContent = amperage(spot);
     item.replaceChildren(title, amps);
     item.setAttribute('aria-label', `Spot ${spot}: ${status}, ${amperage(spot)}`);
