@@ -1,0 +1,43 @@
+name: Rentec website and occupancy
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+permissions:
+  contents: read
+concurrency:
+  group: rentec-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - name: Test occupancy validation
+        run: node .github/scripts/rentec-map-adapter.test.cjs
+      - name: Read current Rentec occupancy
+        env:
+          RENTEC_OCCUPANCY_KEY: ${{ secrets.RENTEC_OCCUPANCY_KEY }}
+        run: node .github/scripts/rentec-map-refresh.cjs occupancy.json
+      - name: Package public website only
+        run: |
+          mkdir _site
+          find . -maxdepth 1 -type f \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.json' -o -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.JPG' -o -name '*.svg' -o -name '*.ico' -o -name '*.pdf' -o -name 'CNAME' -o -name 'robots.txt' -o -name 'sitemap.xml' \) -exec cp {} _site/ \;
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
