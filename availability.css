@@ -3,3 +3,5 @@
 .availability-amperage{display:block;margin-top:4px;font-size:.78em;line-height:1.3;color:#f4dfc5}
 
 .availability-pin[data-spot="1"],.availability-pin[data-spot="2"],.availability-pin[data-spot="3"],.availability-pin[data-spot="4"],.availability-pin[data-spot="5"],.availability-pin[data-spot="6"],.availability-pin[data-spot="7"],.availability-pin[data-spot="8"],.availability-pin[data-spot="9"]{transform:translate(-165%,-50%)}
+
+.availability-amperage-30{width:fit-content;margin-left:auto;margin-right:auto;padding:1px 5px;border-radius:4px;background:#ffe34d;color:#211b08;font-weight:700}
