@@ -18,13 +18,18 @@ jobs:
       - uses: actions/checkout@v6
       - name: Test occupancy validation
         run: node .github/scripts/rentec-map-adapter.test.cjs
+      - name: Test occupancy calendar safety
+        run: node .github/scripts/rentec-site-calendars.test.cjs
       - name: Read current Rentec occupancy
         env:
           RENTEC_OCCUPANCY_KEY: ${{ secrets.RENTEC_OCCUPANCY_KEY }}
         run: node .github/scripts/rentec-map-refresh.cjs occupancy.json
+      - name: Generate public occupancy calendars
+        run: node .github/scripts/rentec-site-calendars.cjs occupancy.json site-calendars
       - name: Package public website only
         run: |
           mkdir _site
+          cp -R site-calendars _site/
           find . -maxdepth 1 -type f \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.json' -o -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.JPG' -o -name '*.svg' -o -name '*.ico' -o -name '*.pdf' -o -name 'CNAME' -o -name 'robots.txt' -o -name 'sitemap.xml' \) -exec cp {} _site/ \;
       - uses: actions/upload-pages-artifact@v4
         with:
