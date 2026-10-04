@@ -790,3 +790,13 @@
 }
 .nav-links .application-btn:hover { color: #251006; }
 .application-btn:focus-visible { outline: 3px solid #fff4dc; outline-offset: 4px; }
+
+/* Lake-blue resident access buttons. */
+.btn.resident-portal-btn {
+  background: linear-gradient(135deg, #086b94, #075176);
+  color: #ffffff;
+  border-color: #62b7d8;
+  box-shadow: 0 10px 28px rgba(4, 74, 112, .32);
+}
+.nav-links .resident-portal-btn:hover { color: #ffffff; }
+.resident-portal-btn:focus-visible { outline: 3px solid #a8e2fa; outline-offset: 4px; }
