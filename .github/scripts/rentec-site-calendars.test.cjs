@@ -1,0 +1,17 @@
+'use strict';
+const assert=require('node:assert/strict');
+const {calendars}=require('./rentec-site-calendars.cjs');
+const now=new Date('2026-10-03T18:00:00Z');
+const feed={version:1,updatedAt:now.toISOString(),spots:Array.from({length:36},(_,i)=>({spot:i+1,status:i===0?'Available':'Occupied',privateName:'NEVER EXPOSE'}))};
+const result=calendars(feed,now);
+assert.equal(result.length,36);
+assert.ok(!result[0].content.includes('BEGIN:VEVENT'));
+assert.ok(result[1].content.includes('UID:rentec-occupied-site-2@stayarv.com'));
+assert.ok(result[1].content.includes('DTEND;VALUE=DATE:21000101'));
+assert.ok(result.every(x=>!x.content.includes('NEVER EXPOSE')));
+assert.ok(result.every(x=>x.content.endsWith('END:VCALENDAR\r\n')));
+assert.throws(()=>calendars({...feed,spots:feed.spots.slice(1)},now),/Incomplete/);
+assert.throws(()=>calendars({...feed,updatedAt:'2026-10-02T00:00:00Z'},now),/Stale/);
+assert.throws(()=>calendars({...feed,spots:feed.spots.map(()=>feed.spots[0])},now),/Invalid/);
+assert.throws(()=>calendars({...feed,spots:feed.spots.map(x=>({...x,status:'Unknown'}))},now),/Invalid/);
+console.log('Passed: occupied blocks, available removal, stable IDs, privacy, missing/duplicate/unknown sites and stale data.');
