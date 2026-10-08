@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resident Portal | Adventure RV Park</title>
+<meta name="description" content="Get ready for Adventure RV's resident portal. Send your contact details, receive your invitation, and sign in to Innago.">
+<link rel="stylesheet" href="site.css?v=20261003-lake-blue">
+<style>
+main{max-width:980px;margin:auto;padding:48px 20px 64px}
+h1{font-size:clamp(38px,7vw,64px);line-height:1.05;letter-spacing:-.05em}
+.intro{max-width:700px;font-size:19px;color:var(--sand)}
+.notice{padding:18px 22px;border:1px solid var(--gold);border-radius:18px;background:rgba(216,168,75,.1);margin:24px 0}
+.steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:32px 0}
+.steps li{position:relative;background:rgba(255,244,220,.06);border:1px solid rgba(216,168,75,.3);border-radius:22px;padding:24px}
+.step-number{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#251006;font-weight:bold}
+.steps h2{font-size:23px;line-height:1.2}.steps p{color:var(--sand)}
+.steps li:not(:last-child)::after{content:"→";position:absolute;right:-18px;top:25px;color:var(--gold);font-size:25px;z-index:1}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}.login{padding:28px;border-radius:24px;background:rgba(8,107,148,.14);border:1px solid #62b7d8}
+.login h2{margin-top:0}.fine{color:var(--sand);font-size:15px}a:not(.btn){text-decoration:underline;text-underline-offset:4px}
+a:focus-visible{outline:3px solid #fff4dc;outline-offset:4px}
+@media(max-width:650px){.steps{grid-template-columns:1fr}.steps li:not(:last-child)::after{content:"↓";top:auto;bottom:-24px;right:26px}.actions .btn{white-space:normal;text-align:center}}
+</style></head><body>
+<div class="top"><strong>Adventure RV Park</strong> · Resident Portal</div>
+<main><a href="index.html">← Back to the park website</a>
+<h1>Your spot. Your resident portal.</h1>
+<p class="intro">Already living at Adventure RV? We’ll connect your email to your existing resident record. You do not need to apply again.</p>
+<div class="notice"><strong>We’re preparing the move to Innago.</strong><br>Continue your current payment arrangement until the park confirms your switch. Providing your email does not make a payment or turn on automatic payments.</div>
+<ol class="steps">
+<li><span class="step-number" aria-hidden="true">1</span><h2>Send your details</h2><p>Email the park your <strong>name, site number, and email address</strong>. We’ll match them to your existing record.</p></li>
+<li><span class="step-number" aria-hidden="true">2</span><h2>Open your invitation</h2><p>When your account is ready, look for an email from Innago. Follow its link to create your password. Check your spam folder too.</p></li>
+<li><span class="step-number" aria-hidden="true">3</span><h2>Sign in here</h2><p>After accepting your invitation, return here to open Innago. The park will confirm when to begin payments. Automatic payments require a separate setup.</p></li>
+</ol>
+<div class="actions"><a class="btn application-btn" href="mailto:adventurervpark@gmail.com?subject=Resident%20portal%20email%20setup&amp;body=Name%3A%20%0ASite%20number%3A%20%0AEmail%20address%3A%20">Send my details by email</a><a class="btn outline" href="tel:14796410032">Call the park</a></div>
+<p class="fine">Email: <a href="mailto:adventurervpark@gmail.com">adventurervpark@gmail.com</a> · Phone: <a href="tel:14796410032">479-641-0032</a><br>Please send contact details only. Enter bank information and passwords directly in Innago.</p>
+<section class="login"><h2>Already accepted your invitation?</h2><p>Use the same email and password you set up through your Innago invitation.</p><a class="btn resident-portal-btn" href="https://my.innago.com/">Sign in to Innago</a><p class="fine">Haven’t received an invitation? Send your details above. You do not need to create a landlord account.</p></section>
+<p class="fine">Looking for a new spot instead? <a href="signup.html">Apply / Join Waitlist</a></p>
+</main><footer><div class="wrap">Adventure RV Park · 152 Launch Road, Atkins, AR 72823</div></footer>
+</body></html>
