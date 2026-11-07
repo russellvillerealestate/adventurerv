@@ -6,7 +6,7 @@ Static GitHub Pages site for stayarv.com.
 
 - `signup.html` gates Continue on damage = no, cleanliness = yes, and rules agreement = checked.
 - Answers remain in the browser. There is no application submission, reservation, identity verification, payment, or saved consent record.
-- Continue currently reveals the park's existing call/text contact for availability confirmation.
+- Continue reveals the free Innago interest-list link and the park's call contact. The park is currently full; joining does not reserve a spot, guarantee availability, create a tenancy, or collect payment.
 - `rules.html` transcribes the owner-supplied rules; `park-rules.pdf` is the original unchanged document supplied September 29, 2026.
 - `site.css` is the existing homepage stylesheet shared by all pages; `signup.css` styles the new forms and rules.
 

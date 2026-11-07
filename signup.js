@@ -12,7 +12,7 @@
     const needsReview = form.elements.damage.value === 'yes' || form.elements.clean.value === 'no';
     status.textContent = needsReview
       ? 'Please contact the park at 479-641-0032 to discuss your camper before continuing.'
-      : allowed ? 'You can continue to your application.'
+      : allowed ? 'You can continue to the free interest list.'
       : 'Answer both questions and agree to the park rules to continue.';
   }
   form.addEventListener('change', update);
