@@ -9,3 +9,7 @@
 
 /* Revised October 22 map: centers for sites 1–16 are defined in availability.js. */
 .availability-pin[data-spot="1"],.availability-pin[data-spot="2"],.availability-pin[data-spot="3"],.availability-pin[data-spot="4"],.availability-pin[data-spot="5"],.availability-pin[data-spot="6"],.availability-pin[data-spot="7"],.availability-pin[data-spot="8"],.availability-pin[data-spot="9"],.availability-pin[data-spot="10"],.availability-pin[data-spot="11"],.availability-pin[data-spot="12"],.availability-pin[data-spot="13"],.availability-pin[data-spot="14"],.availability-pin[data-spot="15"],.availability-pin[data-spot="16"]{transform:translate(-50%,-50%)}
+
+/* Possible openings are intentionally distinct from park-confirmed openings. */
+.availability-pin[data-status="potential"] { background: #8b5a19; color: #fff; }
+.availability-item[data-status="potential"] { border-color: #8b5a19; background: #fff4db; color: #563809; }

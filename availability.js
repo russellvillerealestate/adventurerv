@@ -40,6 +40,10 @@
   let selectedSpot = null;
   let openSpot = null;
   let refreshing = false;
+  let snapshot = null;
+  // Spot 22 was reported taken even though its current lease record was not verified.
+  const holdFromOnlineEstimates = new Set([22]);
+  let estimatedOpenings = new Set();
 
   const markers = positions.map(([x, y], i) => {
     const spot = i + 1;
@@ -69,6 +73,8 @@
       details.textContent = 'Choose a spot to see its details.';
     } else if (selectedSpot === openSpot) {
       details.textContent = `Spot ${selectedSpot}: park-confirmed opening. Contact the park to confirm your arrival date before traveling.`;
+    } else if (estimatedOpenings.has(selectedSpot)) {
+      details.textContent = `Spot ${selectedSpot}: possible opening based on lease records. Contact the park to confirm availability and arrival before traveling.`;
     } else {
       details.textContent = `Spot ${selectedSpot}: check availability with the park. This status does not mean the spot is open or occupied.`;
     }
@@ -83,58 +89,67 @@
       Number.isFinite(recordedAt) && recordedAt <= Date.now() ? record.site : null;
   }
 
-  function render(nextOpening) {
+  const feedNote = document.createElement('p');
+  feedNote.className = 'availability-help';
+  summary.after(feedNote);
+
+  const timeFormat = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Chicago', month: 'short', day: 'numeric',
+    hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
+  });
+  const exact = (value, keys) => value !== null && typeof value === 'object' &&
+    !Array.isArray(value) && Object.keys(value).length === keys.length &&
+    keys.every(key => Object.hasOwn(value, key));
+
+  function parseSnapshot(data) {
+    if (!exact(data, ['version', 'source', 'status', 'updatedAt', 'spots']) ||
+        data.source !== 'Innago' || !Array.isArray(data.spots) ||
+        data.spots.length !== positions.length) return null;
+    const estimates = data.version === 4 && data.status === 'Indicative';
+    const legacy = data.version === 3 && data.status === 'RequestOnly';
+    if (!estimates && !legacy) return null;
+    if (typeof data.updatedAt !== 'string') return null;
+    const checked = Date.parse(data.updatedAt);
+    if (!Number.isFinite(checked) || checked > Date.now() ||
+        new Date(checked).toISOString() !== data.updatedAt) return null;
+    const allowed = estimates ? ['NoLeaseOnFile', 'LeaseOnFile', 'Unknown'] : ['Unknown'];
+    const seen = new Set(), possible = new Set();
+    for (const row of data.spots) {
+      if (!exact(row, ['spot', 'status']) || !Number.isInteger(row.spot) ||
+          row.spot < 1 || row.spot > positions.length || !allowed.includes(row.status) ||
+          seen.has(row.spot)) return null;
+      seen.add(row.spot);
+      if (row.status === 'NoLeaseOnFile' && !holdFromOnlineEstimates.has(row.spot)) {
+        possible.add(row.spot);
+      }
+    }
+    return {checked, possible, estimates};
+  }
+
+  function render(nextOpening, nextSnapshot) {
     openSpot = nextOpening;
-    const summaryText = openSpot === null ? 'Current openings: Check availability' :
-      `Spot ${openSpot} · Park-confirmed opening`;
+    snapshot = nextSnapshot;
+    estimatedOpenings = new Set(snapshot?.possible);
+    estimatedOpenings.delete(openSpot);
+    const count = estimatedOpenings.size;
+    const summaryText = openSpot !== null ? `Spot ${openSpot} · Park-confirmed opening` :
+      count ? `${count} possible opening${count === 1 ? '' : 's'} · Check with the park` :
+        'Current openings: Check availability';
     if (summary.textContent !== summaryText) summary.textContent = summaryText;
+    const note = snapshot?.estimates ?
+      `Lease records last checked ${timeFormat.format(snapshot.checked)}. Online estimates may lag. Confirm with the park before making plans.` :
+      'Please contact the park for current availability and arrival dates.';
+    if (feedNote.textContent !== note) feedNote.textContent = note;
     for (const {spot, pin, item} of markers) {
-      const open = spot === openSpot;
-      const label = open ? 'Park-confirmed opening' : 'Check availability';
-      const status = open ? 'available' : 'unknown';
+      const open = spot === openSpot, possible = estimatedOpenings.has(spot);
+      const label = open ? 'Park-confirmed opening' : possible ? 'Possible opening' : 'Check availability';
+      const status = open ? 'available' : possible ? 'potential' : 'unknown';
       if (item.dataset.status === status) continue;
       pin.dataset.status = item.dataset.status = status;
       pin.setAttribute('aria-label', `Spot ${spot}: ${label}, ${amperage(spot)}`);
       labelItem(item, spot, label);
     }
     renderDetails();
-  }
-
-  // These are separate: the public Innago snapshot can describe what was
-  // checked, but it can never create or revoke a park-confirmed opening.
-  const feedNote = document.createElement('p');
-  feedNote.className = 'availability-help';
-  summary.after(feedNote);
-
-  function feedTime(data) {
-    if (data?.version !== 3 || data.source !== 'Innago' ||
-        data.status !== 'RequestOnly' || !Array.isArray(data.spots) ||
-        data.spots.length !== positions.length) return null;
-    const checked = Date.parse(data.updatedAt);
-    const age = Date.now() - checked;
-    if (!Number.isFinite(checked) || age < 0 || age >= 2 * 60 * 60 * 1000) return null;
-    const seen = new Set();
-    for (const row of data.spots) {
-      if (!Number.isInteger(row?.spot) || row.spot < 1 || row.spot > positions.length ||
-          row.status !== 'Unknown' || seen.has(row.spot)) return null;
-      seen.add(row.spot);
-    }
-    return checked;
-  }
-
-  const timeFormat = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'America/Chicago', month: 'short', day: 'numeric',
-    hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
-  });
-  let lastFeedCheck = null;
-
-  function showFeedNote() {
-    const recent = lastFeedCheck !== null && Date.now() >= lastFeedCheck &&
-      Date.now() - lastFeedCheck < 2 * 60 * 60 * 1000;
-    const text = recent ?
-      `Online feed updated ${timeFormat.format(lastFeedCheck)}. They do not confirm which spots are open.` :
-      'Please contact the park for current availability and arrival dates.';
-    if (feedNote.textContent !== text) feedNote.textContent = text;
   }
 
   async function readPublicJson(path, signal) {
@@ -152,21 +167,19 @@
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 10000);
     try {
-      await Promise.all([
-        readPublicJson('owner-opening.json', controller.signal)
-          .then(record => render(verifiedOpening(record))),
+      const [record, feed] = await Promise.all([
+        readPublicJson('owner-opening.json', controller.signal),
         readPublicJson('availability-v3.json', controller.signal)
-          .then(snapshot => { lastFeedCheck = feedTime(snapshot); showFeedNote(); })
       ]);
+      render(verifiedOpening(record), parseSnapshot(feed));
     } finally {
       clearTimeout(timeout);
       refreshing = false;
     }
   }
 
-  showFeedNote();
-  render(null);
+  render(null, null);
   refresh();
-  setInterval(() => { if (!document.hidden) { showFeedNote(); refresh(); } }, 60000);
+  setInterval(() => { if (!document.hidden) refresh(); }, 60000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
 })();
