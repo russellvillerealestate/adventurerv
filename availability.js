@@ -74,7 +74,7 @@
     } else if (selectedSpot === openSpot) {
       details.textContent = `Spot ${selectedSpot}: park-confirmed opening. Contact the park to confirm your arrival date before traveling.`;
     } else if (estimatedOpenings.has(selectedSpot)) {
-      details.textContent = `Spot ${selectedSpot}: possible opening based on lease records. Contact the park to confirm availability and arrival before traveling.`;
+      details.textContent = `Spot ${selectedSpot}: Open (estimate based on lease records). Contact the park to confirm availability and arrival before traveling.`;
     } else {
       details.textContent = `Spot ${selectedSpot}: check availability with the park. This status does not mean the spot is open or occupied.`;
     }
@@ -142,7 +142,7 @@
     if (feedNote.textContent !== note) feedNote.textContent = note;
     for (const {spot, pin, item} of markers) {
       const open = spot === openSpot, possible = estimatedOpenings.has(spot);
-      const label = open ? 'Park-confirmed opening' : possible ? 'Possible opening' : 'Check availability';
+      const label = open ? 'Park-confirmed opening' : possible ? 'Open' : 'Check availability';
       const status = open ? 'available' : possible ? 'potential' : 'unknown';
       if (item.dataset.status === status) continue;
       pin.dataset.status = item.dataset.status = status;
