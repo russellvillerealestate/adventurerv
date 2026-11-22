@@ -16,36 +16,110 @@
     item.replaceChildren(title, amps);
     item.setAttribute('aria-label', `Spot ${spot}: ${status}, ${amperage(spot)}`);
   }
-  const summary = document.createElement('p'); summary.className = 'availability-summary'; summary.setAttribute('role','status'); summary.textContent = 'Checking current availability…';
-  const help = document.createElement('p'); help.className = 'availability-help'; help.textContent = 'All 36 spots are shown below. Please ask the park about current openings. This map does not confirm future dates or reserve a spot.';
-  const scroll = document.createElement('div'); scroll.className = 'availability-scroll'; scroll.setAttribute('aria-label','Full park map showing all 36 spots.');
-  const canvas = document.createElement('div'); canvas.className='availability-canvas';
-  image.parentNode.insertBefore(summary,image); summary.after(help,scroll); scroll.append(canvas); canvas.append(image);
-  const details = document.createElement('p'); details.className='availability-detail'; details.setAttribute('aria-live','polite'); details.textContent='Choose a spot to see its status.';
-  const grid = document.createElement('div'); grid.className='availability-grid'; grid.setAttribute('aria-label','All 36 spots');
-  const updated = document.createElement('p'); updated.className='availability-updated';
-  scroll.after(details,grid,updated);
-  let statuses = new Map(), selectedSpot = null, lastCheck = NaN, ownerOpening = null;
-  const inquire=document.createElement('a');inquire.href='signup.html';inquire.className='btn';inquire.textContent='Ask about Spot 22 — start the camper questionnaire';inquire.hidden=true;details.after(inquire);
-  function ownerActive(){const a=Date.parse(ownerOpening?.recordedAt);return ownerOpening?.site===22&&ownerOpening?.status==='AvailableNow'&&ownerOpening?.authority==='owner-confirmed'&&ownerOpening?.validUntil==='revoked-or-contradicted'&&Number.isFinite(a)&&a<=Date.now();}
-  function detail(spot){return spot===22&&ownerActive()?'Spot 22: owner-confirmed available now. Submit an inquiry; park confirmation is required before arrival. No future dates are reserved.':`Spot ${spot}: contact the park to confirm availability and arrival timing.`;}
-  const markers = positions.map(([x,y],i)=>{
-    const spot=i+1;
-    const make = cls => {const b=document.createElement('button'); b.type='button'; b.className=cls; b.dataset.spot=spot; b.textContent=spot; b.addEventListener('click',()=>{selectedSpot=spot;details.textContent=detail(spot);}); return b;};
-    const pin=make('availability-pin'); pin.style.left=x+'%'; pin.style.top=y+'%'; canvas.append(pin);
-    const item=make('availability-item'); labelItem(item,spot,'Checking…'); grid.append(item);
-    return {spot,pin,item};
+  const summary = document.createElement('p');
+  summary.className = 'availability-summary';
+  summary.setAttribute('role', 'status');
+  const scroll = document.createElement('div');
+  scroll.className = 'availability-scroll';
+  scroll.setAttribute('aria-label', 'Adventure RV Park map showing all 36 spots');
+  const canvas = document.createElement('div');
+  canvas.className = 'availability-canvas';
+  image.parentNode.insertBefore(summary, image);
+  summary.after(scroll);
+  scroll.append(canvas);
+  canvas.append(image);
+
+  const details = document.createElement('p');
+  details.className = 'availability-detail';
+  details.setAttribute('aria-live', 'polite');
+  const grid = document.createElement('div');
+  grid.className = 'availability-grid';
+  grid.setAttribute('aria-label', 'All 36 RV spots');
+  scroll.after(details, grid);
+
+  let selectedSpot = null;
+  let openSpot = null;
+  let refreshing = false;
+
+  const markers = positions.map(([x, y], i) => {
+    const spot = i + 1;
+    const make = className => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = className;
+      b.dataset.spot = spot;
+      b.textContent = spot;
+      b.addEventListener('click', () => {
+        selectedSpot = spot;
+        renderDetails();
+      });
+      return b;
+    };
+    const pin = make('availability-pin');
+    pin.style.left = x + '%';
+    pin.style.top = y + '%';
+    canvas.append(pin);
+    const item = make('availability-item');
+    grid.append(item);
+    return {spot, pin, item};
   });
-  function unavailable(){lastCheck=NaN;statuses=new Map();inquire.hidden=!ownerActive();summary.textContent=ownerActive()?'Spot 22 open — owner-confirmed · Innago update unconfirmed':'Availability could not be confirmed. Please contact the park.';markers.forEach(({spot,pin,item})=>{const open=spot===22&&ownerActive();statuses.set(spot,open?'Available':'Unknown');for(const b of [pin,item]){b.dataset.status=open?'available':'unknown';b.setAttribute('aria-label',`Spot ${spot}: ${open?'owner-confirmed open':'ask the park'}`);}labelItem(item,spot,open?'Open · owner-confirmed':'Check status');});updated.textContent='Innago data is stale or unavailable. Owner-confirmed openings are separate standing instructions; confirm with the park before arrival. No future dates are reserved.';details.textContent=selectedSpot?detail(selectedSpot):'Please contact the park for current availability.';}
-  function validate(data){
-    if(data?.version!==3||data.source!=='Innago'||data.status!=='RequestOnly'||!Array.isArray(data.spots)||data.spots.length!==36)throw Error('Invalid feed');
-    const t=Date.parse(data.updatedAt),age=Date.now()-t;
-    if(!Number.isFinite(t)||age<0||age>=7200000)throw Error('Stale feed');
-    const seen=new Set();for(const row of data.spots){if(!Number.isInteger(row.spot)||row.spot<1||row.spot>36||seen.has(row.spot)||row.status!=='Unknown')throw Error('Invalid spot');seen.add(row.spot);}return data;
+
+  function renderDetails() {
+    if (selectedSpot === null) {
+      details.textContent = 'Choose a spot to see its details.';
+    } else if (selectedSpot === openSpot) {
+      details.textContent = `Spot ${selectedSpot}: park-confirmed opening. Contact the park to confirm your arrival date before traveling.`;
+    } else {
+      details.textContent = `Spot ${selectedSpot}: check availability with the park. This status does not mean the spot is open or occupied.`;
+    }
   }
-  async function refresh(){const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),10000);try{try{const o=await fetch('owner-opening.json?t='+Date.now(),{cache:'no-store',signal:controller.signal});ownerOpening=o.ok?await o.json():null;}catch{ownerOpening=null;}const res=await fetch('availability-v3.json?t='+Date.now(),{cache:'no-store',signal:controller.signal});if(!res.ok)throw Error('Unavailable');const data=validate(await res.json());lastCheck=Date.parse(data.updatedAt);statuses=new Map(data.spots.map(s=>[s.spot,s.status]));if(ownerActive())statuses.set(22,'Available');inquire.hidden=!ownerActive();summary.textContent=ownerActive()?'Spot 22 available now — owner-confirmed · Other spots: ask the park':'36 spots · Contact the park for current openings';markers.forEach(({spot,pin,item})=>{const status=statuses.get(spot);for(const b of [pin,item]){b.dataset.status=status.toLowerCase();b.setAttribute('aria-label',`Spot ${spot}: ${status}`);}labelItem(item,spot,spot===22&&ownerActive()?'Available now · owner-confirmed':'Ask the park');});[...markers].sort((a,b)=>(statuses.get(a.spot)==='Available'?0:1)-(statuses.get(b.spot)==='Available'?0:1)||a.spot-b.spot).forEach(({item})=>grid.append(item));if(selectedSpot)details.textContent=detail(selectedSpot);updated.textContent=`Innago snapshot checked: ${new Date(data.updatedAt).toLocaleString()}. Innago is checked hourly. Updates may be delayed; data older than two hours is treated as unconfirmed. Owner-confirmed openings remain listed until the owner changes them or newer evidence contradicts them; confirm arrival with the park.`;}catch{unavailable();}finally{clearTimeout(timeout);}}
-  setInterval(()=>{if(!ownerActive()&&statuses.get(22)==='Available'){statuses.set(22,'Unknown');inquire.hidden=true;const m=markers.find(m=>m.spot===22);for(const b of [m.pin,m.item]){b.dataset.status='unknown';b.setAttribute('aria-label','Spot 22: ask the park');}labelItem(m.item,22,'Ask the park');summary.textContent='36 spots · Contact the park for current openings';if(selectedSpot===22)details.textContent=detail(22);}if(Number.isFinite(lastCheck)&&(Date.now()<lastCheck||Date.now()-lastCheck>=7200000))unavailable();},1000);
-  refresh(); setInterval(()=>{if(!document.hidden)refresh();},60000); document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
+
+  function verifiedOpening(record) {
+    const recordedAt = Date.parse(record?.recordedAt);
+    return record?.status === 'AvailableNow' &&
+      record.authority === 'owner-confirmed' &&
+      record.validUntil === 'revoked-or-contradicted' &&
+      Number.isInteger(record.site) && record.site >= 1 && record.site <= positions.length &&
+      Number.isFinite(recordedAt) && recordedAt <= Date.now() ? record.site : null;
+  }
+
+  function render(nextOpening) {
+    openSpot = nextOpening;
+    const summaryText = openSpot === null ? 'Current openings: Check availability' :
+      `Spot ${openSpot} · Park-confirmed opening`;
+    if (summary.textContent !== summaryText) summary.textContent = summaryText;
+    for (const {spot, pin, item} of markers) {
+      const open = spot === openSpot;
+      const label = open ? 'Park-confirmed opening' : 'Check availability';
+      const status = open ? 'available' : 'unknown';
+      if (item.dataset.status === status) continue;
+      pin.dataset.status = item.dataset.status = status;
+      pin.setAttribute('aria-label', `Spot ${spot}: ${label}, ${amperage(spot)}`);
+      labelItem(item, spot, label);
+    }
+    renderDetails();
+  }
+
+  async function refresh() {
+    if (refreshing) return;
+    refreshing = true;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+    try {
+      // Only the park's explicit public confirmation can show a spot as open.
+      // Innago lease dates and assignments are not public availability evidence.
+      const response = await fetch('owner-opening.json?t=' + Date.now(), {cache: 'no-store', signal: controller.signal});
+      render(response.ok ? verifiedOpening(await response.json()) : null);
+    } catch {
+      render(null);
+    } finally {
+      clearTimeout(timeout);
+      refreshing = false;
+    }
+  }
+
+  render(null);
+  refresh();
+  setInterval(() => { if (!document.hidden) refresh(); }, 60000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
 })();
-
-
