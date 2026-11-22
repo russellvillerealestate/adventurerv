@@ -100,26 +100,73 @@
     renderDetails();
   }
 
+  // These are separate: the public Innago snapshot can describe what was
+  // checked, but it can never create or revoke a park-confirmed opening.
+  const feedNote = document.createElement('p');
+  feedNote.className = 'availability-help';
+  summary.after(feedNote);
+
+  function feedTime(data) {
+    if (data?.version !== 3 || data.source !== 'Innago' ||
+        data.status !== 'RequestOnly' || !Array.isArray(data.spots) ||
+        data.spots.length !== positions.length) return null;
+    const checked = Date.parse(data.updatedAt);
+    const age = Date.now() - checked;
+    if (!Number.isFinite(checked) || age < 0 || age >= 2 * 60 * 60 * 1000) return null;
+    const seen = new Set();
+    for (const row of data.spots) {
+      if (!Number.isInteger(row?.spot) || row.spot < 1 || row.spot > positions.length ||
+          row.status !== 'Unknown' || seen.has(row.spot)) return null;
+      seen.add(row.spot);
+    }
+    return checked;
+  }
+
+  const timeFormat = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Chicago', month: 'short', day: 'numeric',
+    hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
+  });
+  let lastFeedCheck = null;
+
+  function showFeedNote() {
+    const recent = lastFeedCheck !== null && Date.now() >= lastFeedCheck &&
+      Date.now() - lastFeedCheck < 2 * 60 * 60 * 1000;
+    const text = recent ?
+      `Online feed updated ${timeFormat.format(lastFeedCheck)}. They do not confirm which spots are open.` :
+      'Please contact the park for current availability and arrival dates.';
+    if (feedNote.textContent !== text) feedNote.textContent = text;
+  }
+
+  async function readPublicJson(path, signal) {
+    try {
+      const response = await fetch(path + '?t=' + Date.now(), {cache: 'no-store', signal});
+      return response.ok ? await response.json() : null;
+    } catch {
+      return null;
+    }
+  }
+
   async function refresh() {
     if (refreshing) return;
     refreshing = true;
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 10000);
     try {
-      // Only the park's explicit public confirmation can show a spot as open.
-      // Innago lease dates and assignments are not public availability evidence.
-      const response = await fetch('owner-opening.json?t=' + Date.now(), {cache: 'no-store', signal: controller.signal});
-      render(response.ok ? verifiedOpening(await response.json()) : null);
-    } catch {
-      render(null);
+      await Promise.all([
+        readPublicJson('owner-opening.json', controller.signal)
+          .then(record => render(verifiedOpening(record))),
+        readPublicJson('availability-v3.json', controller.signal)
+          .then(snapshot => { lastFeedCheck = feedTime(snapshot); showFeedNote(); })
+      ]);
     } finally {
       clearTimeout(timeout);
       refreshing = false;
     }
   }
 
+  showFeedNote();
   render(null);
   refresh();
-  setInterval(() => { if (!document.hidden) refresh(); }, 60000);
+  setInterval(() => { if (!document.hidden) { showFeedNote(); refresh(); } }, 60000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
 })();
